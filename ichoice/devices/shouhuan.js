@@ -1,139 +1,67 @@
 /**
  * Created by zhaosc on 8/12/16.
  */
-var request = require('../libs/request');
-var model = require('../model');
+let common = require('../../common')
+let co = require('co')
 var rq = require('request');
 
 var isTarget = "100D0B145F8CF011BA";
 var targetMap = {};
-var connected = {};
-
-exports.onAuth = function () {
-    //listen data
-    request({
-        method: 'GET',
-        path: '/gatt/nodes?event=1&mac=' + hubMac
-    }).then(function (res) {
-        res.on('data', function (data) {
-            var mac = data.id;
-            //console.log('sssssssssssshhhhhhhhhhh', data);
-            if (data.value.startsWith('55aa06')) {
-                var pairstring = handleData(data.value, mac);
-                writeByHandler(mac, 18, pairstring);
-            }
-            if (data.value.slice(0, 6).toLowerCase() == "55aa05") {
-                var step = handleStep(data.value);
-                if (!step) return;
-                console.log("步数::::", step);
-                rq({
-                    json: true,
-                    method: 'POST',
-                    form: {
-                        type: 'STEP',
-                        value: step,
-                        mac: mac,
-                        hub_mac: hubMac,
-                        timestamp: parseInt(Date.now() / 1000)
-                    },
-                    url: 'http://www.cooptec.cn/ShangYiJia/getWearableDevice.action'
-                }, function (err, res, body) {
-                    console.log('post to shangYiJia sys OK!!!!!!!!', body);
-                    console.log(err, res.statusCode);
-                });
-                model.save({
-                    type: 'shouhuan',
-                    mac: mac,
-                    value: '步数(step)：' + step,
-                    time: Date.now()
-                })
-            }
-        })
-    });
-
-    //connectionState
-    request({
-        method: 'GET',
-        path: '/management/nodes/connection-state?mac=' + hubMac
-    }).then(function (res) {
-        res.on('data', function (state) {
-            if (!targetMap[state.handle]) return;
-            console.log(state);
-            var isConnecting = state.connectionState == 'connected' || state.connectionState == 'connect'
-            if (!isConnecting) {
-                console.log(state);
-                connected[state.handle] = false;
-            }
-        })
-    });
-};
 
 exports.onScan = function (data) {
-    dataObj = JSON.parse(data);
-    if (dataObj.name.match('A40')) {
-        console.log('matched');
-        connect(data)
-    }
-};
+    if (!data.name.match('A40')) return
+    if (isConnecting) return
+    isConnecting = true
+    console.log('matched A40');
+    let deviceMac = data.bdaddrs[0].bdaddr
+    co(function* () {
+        targetMap[deviceMac] = true
+        yield common.connect(deviceMac)
 
-function connect(info) {
-    info = info.split('\n\n')[0];
-    info = info.replace('data: ', '');
-    try {
-        info = JSON.parse(info);
-    } catch (e) {
-        console.log(e, info)
-    }
-    var deviceMac = info.bdaddrs[0].bdaddr;
-    targetMap[deviceMac] = true;
-    if(isConnecting) return;
-    isConnecting = true;
-    request({
-        method: 'POST',
-        path: '/gap/nodes/' + deviceMac + '/connection?chip=0&mac=' + hubMac,
-        body: {
-            timeOut: '1',
-            type: 'public'
-        }
-    }).then(function (ret) {
-        console.log('connect', ret, deviceMac);
-        isConnecting = false;
-        //xt,xy
-        writeByHandler(deviceMac, '22', '0100')
-            .then(function () {
-                return writeByHandler(deviceMac, '25', '0100')
-            })
-            .then(function () {
-                return writeByHandler(deviceMac, '28', '0100')
-            })
-            .then(function () {
-                return writeByHandler(deviceMac, '31', '0100')
-            })
-            .then(function () {
-                return writeByHandler(deviceMac, '18', 'AA5502B0B2')
-            })
+        yield common.writeByHandle(deviceMac, '22', '0100')
+        yield common.writeByHandle(deviceMac, '25', '0100')
+        yield common.writeByHandle(deviceMac, '28', '0100')
+        yield common.writeByHandle(deviceMac, '31', '0100')
+        yield common.writeByHandle(deviceMac, '18', 'AA5502B0B2')
     })
 }
 
-function writeByHandler(deviceMac, handle, value) {
-    return new Promise(function (resolve, reject) {
-        request({
-            method: 'GET',
-            path: '/gatt/nodes/' + deviceMac + '/handle/' + handle + '/value/' + value + '?mac=' + hubMac
+exports.onNotify = function (data) {
+    if (!targetMap[data.id]) return
+    var mac = data.id;
+    //console.log('sssssssssssshhhhhhhhhhh', data);
+    if (data.value.startsWith('55aa06')) {
+        var pairstring = handleData(data.value, mac);
+        common.writeByHandler(mac, 18, pairstring);
+    }
+    if (data.value.slice(0, 6).toLowerCase() == "55aa05") {
+        var step = handleStep(data.value);
+        if (!step) return;
+        console.log("步数::::", step);
+        // rq({
+        //     json: true,
+        //     method: 'POST',
+        //     form: {
+        //         type: 'STEP',
+        //         value: step,
+        //         mac: mac,
+        //         hub_mac: hubMac,
+        //         timestamp: parseInt(Date.now() / 1000)
+        //     },
+        //     url: 'http://www.cooptec.cn/ShangYiJia/getWearableDevice.action'
+        // }, function (err, res, body) {
+        //     console.log('post to shangYiJia sys OK!!!!!!!!', body);
+        //     console.log(err, res.statusCode);
+        // });
+        process.send({
+            type: 'event',
+            data: {
+                device: 'shouhuan',
+                value: '步数(step)：' + step,
+                mac: data.id
+            }
         })
-            .then(function (ret) {
-                resolve(ret)
-            })
-            .catch(function (e) {
-                reject(e)
-            })
-    })
-        .then(function (ret) {
-            console.log('write handle', ret);
-        })
-        .catch(function (e) {
-            console.log(e);
-        })
+    }
 }
 
 var p1 = 43;//秘钥生成素数1
@@ -187,7 +115,6 @@ function judgeSum(string) {
 
         result = result[result.length - 2] + result[result.length - 1];
     }
-    ;
     return result;
 
 

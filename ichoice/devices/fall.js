@@ -1,10 +1,6 @@
 /**
  * Created by zhaosc on 9/18/16.
  */
-var request = require('../libs/request');
-var model = require('../model');
-var bluetooth = require('../libs/bluetooth');
-
 var isTarget = "CassiaFD_";
 var fallInfo = {
     'CC:1B:E0:E8:01:FD': {
@@ -17,14 +13,7 @@ var fallInfo = {
     }
 };
 var fallList = Object.keys(fallInfo);
-var targetMap = {};
-var connected = {};
-exports.onAuth = function () {
-};
-
-exports.onScan = function (data) {
-
-    var info = JSON.parse(data);
+exports.onScan = function (info) {
     var deviceMac = info.bdaddrs[0].bdaddr;
     if (fallList.indexOf(deviceMac) > -1 && info.adData) {
         var packet = info.adData;
@@ -44,40 +33,21 @@ exports.onScan = function (data) {
         //user press fall
         if (parseInt(count, 16) > parseInt(theFall.count, 16)) {
             theFall.count = count;
-            model.clear();
-            model.save({
-                type: 'begin',
-                mac: deviceMac,
-                time: Date.now(),
-                value: theFall.name + '开始测量(start check)'
-            });
+            process.send({
+                type: 'event',
+                data: {
+                    device: 'begin',
+                    value: theFall.name + '开始测量(start check)',
+                    mac: data.id
+                }
+            })
             console.log(theFall.name, '开始测量', ':count:', count)
         }
     }
 
 };
-function connect(info) {
-    info = info.replace('data: ', '');
-    try {
-        info = JSON.parse(info);
-    } catch (e) {
-    }
-    var deviceMac = info.bdaddrs[0].bdaddr;
-    targetMap[deviceMac] = true;
-    if (isConnecting) return;
-    isConnecting = true;
-    request({
-        method: 'POST',
-        path: '/gap/nodes/' + deviceMac + '/connection?chip=0&mac=' + hubMac,
-        body: {
-            timeOut: '1',
-            type: 'public'
-        }
-    }).then(function (ret) {
-        console.log('connect', ret);
-        isConnecting = false;
 
-        bluetooth.writeByHandler(deviceMac, '15', '0100')
-    })
+exports.onNotify = function() {
+
 }
 

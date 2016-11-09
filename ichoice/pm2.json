@@ -1,0 +1,9 @@
+{
+  "name": "ichoice",
+  "script": "index.js",
+  "env": {
+    "NODE_ENV": "production"
+  },
+  "merge_logs": true,
+  "log_date_format":"YYYY-MM-DD HH:mm Z"
+}
