@@ -35,7 +35,7 @@ exports.onNotify = function (data) {
         type: 'event',
         data: {
             device: 'weight',
-            value: '体重(Weight)：' + weight + ' kg',
+            value: 'Weight：' + weight + ' kg',
             mac: data.id
         }
     })

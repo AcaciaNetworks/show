@@ -34,7 +34,7 @@ exports.onNotify = function (data) {
         type: 'event',
         data: {
             device: 'xindian',
-            value: '体重(Weight)：' + weight + ' kg',
+            value: 'ECG:' + weight,
             mac: data.id
         }
     })

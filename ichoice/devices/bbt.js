@@ -36,7 +36,7 @@ exports.onNotify = function (data) {
         type: 'event',
         data: {
             device: 'temp',
-            value: '体温(Thermometer)：' + temp,
+            value: 'Thermometer:' + temp,
             mac: data.id
         }
     })

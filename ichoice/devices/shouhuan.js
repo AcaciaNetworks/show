@@ -57,7 +57,7 @@ exports.onNotify = function (data) {
             type: 'event',
             data: {
                 device: 'shouhuan',
-                value: '步数(step)：' + step,
+                value: 'step:' + step,
                 mac: data.id
             }
         })

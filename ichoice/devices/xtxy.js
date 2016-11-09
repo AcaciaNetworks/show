@@ -71,7 +71,7 @@ exports.onNotify = function (data) {
             type: 'event',
             data: {
                 device: 'xueyang',
-                value: '血氧(Pulse Oximeter)：' + bo + '心跳(hr)：' + hr,
+                value: 'Pulse Oximeter:' + bo + 'HR:' + hr,
                 mac: data.id
             }
         })
