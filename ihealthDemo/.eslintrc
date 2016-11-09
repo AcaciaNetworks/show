@@ -1,0 +1,27 @@
+{
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true
+  },
+  "globals": {
+    "req": false,
+    "isConnecting": true,
+    "userId": false,
+    "secret": false,
+    "cloudAddress": false,
+    "headers": false,
+    "hubMac": false
+  },
+  "extends": "eslint:recommended",
+  "rules": {
+    "no-console": 0,
+    "indent": 1,
+    "linebreak-style": [
+      "error",
+      "unix"
+    ],
+    "quotes": 0,
+    "semi": 0
+  }
+}

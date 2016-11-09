@@ -1,0 +1,20 @@
+/**
+ * Created by zhaosc on 9/26/16.
+ */
+BP { bdaddrs: [ { bdaddr: '7C:EC:79:3D:FE:45', bdaddrType: 'public' } ],
+    adData: '02010611063031564150422E6E6175696A2E6D6F63',
+    name: '(unknown)',
+    rssi: -89 }
+
+    连接超时，或者连上之后获取service错误。
+
+
+
+BP { bdaddrs: [ { bdaddr: '7C:EC:79:3D:FE:45', bdaddrType: 'public' } ],
+  adData: '02010611063031564150422E6E6175696A2E6D6F63',
+  name: '(unknown)',
+  rssi: -83 }
+可以链接上并有数据。
+
+
+

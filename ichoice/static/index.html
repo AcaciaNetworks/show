@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>ichoice</title>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <script src="http://cdn.bootcss.com/jquery/3.1.0/jquery.js"></script>
+    <style type="text/css">
+
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+
+        a, a:hover, a:visited {
+            color: #39f;
+        }
+
+        .m {
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+        .m h2 {
+            margin: 0;
+            text-align: center
+        }
+
+        .sub {
+            width: 33.333%;
+            height: 33.333%;
+            overflow: auto;
+            box-shadow: inset -1px -1px 2px #ccc;
+            display: block;
+            float: left
+        }
+
+        .clear:after {
+            content: ' ';
+            clear: both;
+            display: block;
+            height: 0;
+            visibility: hidden;
+            font-size: 0;
+            line-height: 0;
+        }
+
+        /*.device.disconnected {*/
+        /*background: gray;*/
+        /*}*/
+
+        .device {
+            background: none;
+            -webkit-transition: all 1000ms ease-in-out;
+            -moz-transition: all 1000ms ease-in-out;
+            -ms-transition: all 1000ms ease-in-out;
+            -o-transition: all 1000ms ease-in-out;
+            transition: all 1000ms ease-in-out;
+            font-size: 1.5em;
+        }
+
+        .device.connected {
+            box-sizing: border-box;
+            background: #C4E3C4;
+        }
+
+        .warn {
+            height: 30px;
+            margin: auto;
+            text-align: center;
+            color: red;
+            font-size: 1em;
+        }
+
+        #member {
+            text-align: center;
+            border-bottom: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+<div style="display: none" class="warn">
+    HUB不在线，请确保HUB连上网之后重试一下
+    (hub is offline, please make hub online and try again)
+</div>
+<header>
+    <div id="member"></div>
+</header>
+<div id="area" class="m clear">
+    <div class="sub">
+        <h2>血压(Blood Pressure)</h2>
+
+        <div class="xueya">
+        </div>
+    </div>
+    <div class="sub">
+        <h2>血糖(Blood Glucose)</h2>
+
+        <div class="xuetang"></div>
+    </div>
+    <div class="sub">
+        <h2>血氧(Blood Oxygen)</h2>
+
+        <div class="xueyang"></div>
+    </div>
+    <div class="sub">
+        <h2>手环(Bracelet)</h2>
+
+        <div class="shouhuan"></div>
+    </div>
+    <div class="sub">
+        <h2>心电(ECG)</h2>
+
+        <div class="xindian">
+        </div>
+        <a target="_blank"
+           href="http://115.29.164.236:8071/DoctorUI/Diagnosis/WebFrameset.aspx?code=004900480055#Menu=ChildMenu1">查看结果</a>
+        <!--<img src="http://115.29.164.236:8071/doctorUI/ECGimg/118s1v1.png" style="height: 80%">-->
+    </div>
+    <div class="sub">
+        <h2>口温(Oral Temperature)</h2>
+
+        <div class="kouwen">
+
+        </div>
+    </div>
+    <div class="sub">
+        <h2>其他设备(Others)</h2>
+    </div>
+    <div class="sub">
+        <h2>About</h2>
+        Product 2016 &copy; <a href="http://choicemmed.com/">ChoiceMMed</a> <br>
+        Developer 2016 &copy; <a href="http://www.cassianetworks.com">CassiaNetworks</a>
+    </div>
+    <div class="sub">
+        <img src="data:image/png;base64,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"/>
+    </div>
+</div>
+<script>
+    $.get('token')
+            .then(function (ret) {
+                if (ret.match('offline')) {
+                    $('.warn').show();
+                    $('#area').css('top', '30px');
+                    $('body').click(function () {
+                        location.reload()
+                    })
+                }
+            })
+            .catch(function () {
+                console.error('TOKEN ERROR');
+                setTimeout(function () {
+                    location.reload()
+                }, 1000);
+            });
+    var deviceTpl = '\
+		<div class="device connected">\
+			<div class="icon"></div>\
+			<div class="type"></div>\
+			<div class="mac"></div>\
+			<div class="value"></div>\
+		</div>\
+	';
+    function display(orginalData) {
+        var types = Object.keys(orginalData);
+        types.forEach(function (type) {
+            var data = orginalData[type];
+
+            if (type == 'begin') {
+                var $member = $('#member');
+                var last = $member.data('last') || 0;
+                if (last == data.time) return;
+                $member.data('last', data.time);
+                $('.sub div').text('');
+                $member.text(data.value);
+                $('header').show();
+                $('#area').css('top', '30px');
+                return
+            }
+            var typeArea = $('.' + type);
+            var id = data.mac.replace(/:/g, '');
+            var device = $('#' + id, typeArea);
+            if (!device.length) {
+                device = $(deviceTpl);
+                device.attr('id', id);
+                typeArea.append(device);
+            }
+            device.find('.mac').text(data.mac);
+            device.find('.value').text(data.value)
+        });
+    }
+
+    function run() {
+        var t = Date.now();
+        $.get('data?t=' + t)
+                .then(function (data) {
+                    console.log(data);
+                    display(data)
+                    setTimeout(run, 1000);
+                })
+                .catch(function (e) {
+                    console.error(e);
+                    setTimeout(run, 1000)
+                })
+    }
+    run()
+</script>
+</body>
+</html>
