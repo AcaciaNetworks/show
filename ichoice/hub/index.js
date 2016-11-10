@@ -110,6 +110,7 @@ exports.addEvent = function addEvent(mac, res) {
 function initialProcess(mac) {
     let theHub;
     theHub = hubs[mac] = process.fork(__dirname + '/init.js', [mac, userId, secret, cloudAddress]);
+    theHub.mac = mac
     theHub.count = 1;
 
     theHub.on('message', arg=> {
@@ -117,5 +118,13 @@ function initialProcess(mac) {
             exports.stop(mac);
         }
     });
+    theHub.on('exit', function (code, signal) {
+        console.log('exit', code, signal)
+        if (theHub) {
+            console.log(theHub.mac)
+            delete hubs[theHub.mac]
+            theHub = null
+        }
+    })
     return theHub
 }
