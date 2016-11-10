@@ -89,10 +89,15 @@ exports.connect = function connect(deviceMac, type) {
  * @param {String} deviceMac
  * @param {String} handle
  * @param {String} value
+ * @param {Boolean} isCMD
  * */
-exports.writeByHandle = function (deviceMac, handle, value) {
+exports.writeByHandle = function (deviceMac, handle, value, isCMD) {
     return new Promise(function (resolve, reject) {
-        req.get(`/gatt/nodes/${deviceMac}/handle/${handle}/value/${value}`, function (err, status, body) {
+        req.get(`/gatt/nodes/${deviceMac}/handle/${handle}/value/${value}`, {
+            qs: {
+                option: isCMD ? 'cmd': ''
+            }
+        }, function (err, status, body) {
             if (err) reject(err);
             resolve(body)
         });
