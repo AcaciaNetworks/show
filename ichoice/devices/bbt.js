@@ -17,12 +17,12 @@ exports.onScan = function (data) {
         targetMap[deviceMac] = true
         yield common.connect(deviceMac)
 
-        yield common.writeByHandle(deviceMac, '29', '0100')
-        yield common.writeByHandle(deviceMac, '32', '0100')
-        yield common.writeByHandle(deviceMac, '35', '0100')
-        yield common.writeByHandle(deviceMac, '38', '0100')
-        yield common.writeByHandle(deviceMac, '25', 'aa5509c2100a0a0110101020')
-        yield common.writeByHandle(deviceMac, '25', 'aa5502b2b4')
+        yield common.writeByHandle(deviceMac, '22', '0100')
+        yield common.writeByHandle(deviceMac, '25', '0100')
+        yield common.writeByHandle(deviceMac, '28', '0100')
+        yield common.writeByHandle(deviceMac, '31', '0100')
+        yield common.writeByHandle(deviceMac, '18', 'aa5509c2100a0a0110101020')
+        yield common.writeByHandle(deviceMac, '18', 'aa5502b2b4')
     })
 };
 

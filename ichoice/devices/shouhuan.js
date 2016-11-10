@@ -32,7 +32,7 @@ exports.onNotify = function (data) {
     //console.log('sssssssssssshhhhhhhhhhh', data);
     if (data.value.startsWith('55aa06')) {
         var pairstring = handleData(data.value, mac);
-        common.writeByHandler(mac, 18, pairstring);
+        common.writeByHandle(mac, 18, pairstring);
     }
     if (data.value.slice(0, 6).toLowerCase() == "55aa05") {
         var step = handleStep(data.value);
