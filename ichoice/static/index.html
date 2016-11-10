@@ -155,6 +155,7 @@
     $('#qr').attr('src','http://qr.liantu.com/api.php?w=200&text=' + location.href)
     var search = parseSearch();
     var hubMac = search.mac || '';
+    hubMac = hubMac.toUpperCase()
     document.title += '-' + hubMac;
     $.get('token?mac=' + hubMac)
             .then(function (ret) {
