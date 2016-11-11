@@ -27,7 +27,8 @@ exports.onScan = function (data) {
 };
 
 exports.onNotify = function (data) {
-    if (!targetMap[data.id]) return
+    if (!targetMap[data.id]) return;
+    if(data.value.slice(6,8) != "bb") return;
     let hex = data.value.slice(8, 12);
     var temp = parseInt(hex, 16) / 100;
     console.log('temp:', temp);
