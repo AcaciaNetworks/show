@@ -9,11 +9,11 @@ var targetMap = {};
 
 exports.onScan = function (data) {
     //console.log('ecg', data)
-    if (data.name.match('P10-B')) return
+    if (!data.name.match('P10-B')) return
     if (!(data.adData || data.scanData).match(isTarget)) return
     if (isConnecting) return
     isConnecting = true
-    console.log('mached ecg')
+    console.log('mached ecg', data)
     let deviceMac = data.bdaddrs[0].bdaddr
     co(function* () {
         targetMap[deviceMac] = true
