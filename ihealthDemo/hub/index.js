@@ -32,7 +32,7 @@ auth()
         watch.onmessage = function watch(e) {
             if (e.data.match('keep-alive')) return;
             let status = JSON.parse(e.data);
-            console.log(status);
+            console.log('hubStatus change', status);
             if (toWatch[status.mac] && status.status == 'online') {
                 exports.start(status.mac);
             }
