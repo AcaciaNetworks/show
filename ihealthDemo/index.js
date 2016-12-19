@@ -23,7 +23,7 @@ app.get('/token', function (req, res) {
         })
 });
 
-hub.start('CC:1B:E0:E0:21:E4');
+// hub.start('CC:1B:E0:E0:21:E4');
 //hub.start('CC:1B:E0:E0:16:34');
 
 //server-side-event
