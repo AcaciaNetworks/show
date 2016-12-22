@@ -6,9 +6,9 @@ let EventSource = require('eventsource');
 let req = require('request');
 
 let toWatch = {};
-let cloudAddress = 'http://api.cassianetworks.com';
-let userId = 'xin';
-let secret = '0bda052bf4403a5f';
+let cloudAddress = 'http://127.0.0.1:3000';
+let userId = 'ihealthlabs';
+let secret = '8d8b93bb2d0ff8d9';
 //get token
 function auth() {
     return new Promise(function (resolve, reject) {
