@@ -120,6 +120,7 @@ auth()
         //listen connection change
         let es = new EventSource(cloudAddress + '/management/nodes/connection-state?mac=' + hubMac, { headers });
         es.onmessage = function (e) {
+            if (e.data.match('keep-alive')) return;
             if (e.data.match('offline')) return offlineHandler();
             console.log('connection state change:', e.data)
         };
@@ -135,7 +136,7 @@ auth()
             let notifyData
             try {
                 notifyData = JSON.parse(e.data)
-            } catch(err) {
+            } catch (err) {
                 console.error(err, e.data)
                 return
             }

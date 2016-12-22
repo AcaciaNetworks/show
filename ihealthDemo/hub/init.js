@@ -3,11 +3,10 @@
  */
 
 global.isConnecting = false;
-global.userId = 'ihealthlabs';
-//global.userId = 'zsc';
-global.secret = '8d8b93bb2d0ff8d9';
-//global.secret = '7142a6f0e13265aa';
-global.cloudAddress = 'http://demo.cassianetworks.com';
+global.hubMac = process.argv[2];
+global.userId = process.argv[3];
+global.secret = process.argv[4];
+global.cloudAddress = process.argv[5];
 
 global.headers = {
     Authorization: 'Basic ' + new Buffer(userId + ':' + secret, 'ascii').toString('base64')
@@ -99,7 +98,7 @@ function scan() {
             try {
                 scanData = JSON.parse(e.data)
             } catch(err) {
-                console.error(err, e.data)
+                console.error('json parse e', e.data)
                 return
             }
             d.onScan(scanData)
@@ -135,7 +134,7 @@ auth()
             try {
                 notifyData = JSON.parse(e.data)
             } catch(err) {
-                console.error(err, e.data)
+                console.error('json parse err', e.data)
                 return
             }
             devices.forEach(d => {

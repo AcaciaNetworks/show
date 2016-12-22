@@ -133,7 +133,7 @@ exports.addEvent = function addEvent(mac, res) {
 
 function initialProcess(mac) {
     let theHub;
-    theHub = hubs[mac] = process.fork(__dirname + '/init.js', [mac]);
+    theHub = hubs[mac] = process.fork(__dirname + '/init.js', [mac, userId, secret, cloudAddress]);
     theHub.count = 1;
 
     theHub.on('message', arg => {
