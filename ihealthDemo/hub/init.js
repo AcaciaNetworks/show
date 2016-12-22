@@ -95,7 +95,14 @@ function scan() {
         if (e.data.match(':keep-alive')) return;
         if (e.data.match('offline')) return offlineHandler();
         devices.forEach(function (d) {
-            d.onScan(JSON.parse(e.data))
+            let scanData
+            try {
+                scanData = JSON.parse(e.data)
+            } catch(err) {
+                console.error(err, e.data)
+                return
+            }
+            d.onScan(scanData)
         });
     });
     es.addEventListener('error', err => {
@@ -124,9 +131,15 @@ auth()
         notifyEs.onmessage = function (e) {
             if (e.data.match(':keep-alive')) return;
             if (e.data.match('offline')) return offlineHandler();
-            let data = JSON.parse(e.data);
+            let notifyData
+            try {
+                notifyData = JSON.parse(e.data)
+            } catch(err) {
+                console.error(err, e.data)
+                return
+            }
             devices.forEach(d => {
-                d.onNotify(data)
+                d.onNotify(notifyData)
             })
         }
     });
