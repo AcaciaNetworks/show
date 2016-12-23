@@ -122,7 +122,7 @@ auth()
         es.onmessage = function (e) {
             if (e.data.match('keep-alive')) return;
             if (e.data.match('offline')) return offlineHandler();
-            console.log('connection state change:', e.data)
+            console.log(hubMac, 'connection state change:', e.data)
         };
         es.onerror = function (e) {
             console.error('connection state', e)
@@ -137,7 +137,7 @@ auth()
             try {
                 notifyData = JSON.parse(e.data)
             } catch (err) {
-                console.error(err, e.data)
+                console.error('json parse err', e.data)
                 return
             }
             devices.forEach(d => {

@@ -11,7 +11,7 @@ exports.onScan = function (data) {
     if (!(data.adData || data.scanData).match(isTarget)) return
     if (isConnecting) return
     isConnecting = true
-    console.log('mached bp')
+    console.log(hubMac, 'mached bp')
     let deviceMac = data.bdaddrs[0].bdaddr
     co(function* () {
         targetMap[deviceMac] = true
@@ -30,7 +30,7 @@ exports.onNotify = function (data) {
     var high = parseInt(data.value.slice(12, 14) + data.value.slice(10, 12), 16);
     var low = parseInt(data.value.slice(16, 18) + data.value.slice(14, 16), 16);
     var heartRate = parseInt(data.value.slice(20, 22) + data.value.slice(18, 20), 16);
-    console.log('bp:', high, low, heartRate);
+    console.log(hubMac, 'bp:', high, low, heartRate);
     if (high == 180 && isNaN(low) && isNaN(heartRate)) return
 
     process.send({

@@ -19,7 +19,7 @@ function getWriteHandler(deviceMac) {
     //get characteristics
     req.get(`/gatt/nodes/${deviceMac}/characteristics?uuid=${characterUUID}`, function (err, res, body) {
         getting = false;
-        console.log('characteristics', body, res.statusCode);
+        console.log(hubMac, deviceMac, 'characteristics', body, res.statusCode);
         //if (res.statusCode != 200) return getWriteHandler(deviceMac);
         writeHandler = body.characteristics[0].handle;
     });
@@ -31,10 +31,10 @@ exports.onScan = function BPOnScan(data) {
         //if (deviceMac != '7C:EC:79:3D:FE:45') return;
 
         if (isConnecting) return;
-        console.log('BP', data, isConnecting);
+        console.log(hubMac, 'BP', data, isConnecting);
 
         isConnecting = true;
-        console.log('connect BP', deviceMac);
+        console.log(hubMac, 'connect BP', deviceMac);
         common.connect(deviceMac, deviceType, deviceProtocol)
             .then(function () {
                 macs[deviceMac] = true;
@@ -66,7 +66,7 @@ exports.onScan = function BPOnScan(data) {
                 //    .then(onRead)
 
             }).catch(function (e) {
-                console.error('connect error', e)
+                console.error(hubMac, 'connect error', e, deviceMac)
             });
     }
 };
@@ -77,7 +77,7 @@ exports.onNotify = function BPOnNotify(data) {
         getWriteHandler(data.id);
         return setTimeout(BPOnNotify, 100, data);
     }
-    console.log('bp notify', data);
+    console.log(hubMac, 'bp notify', data);
     if (data.value == deviceType + 'C1') {
         common.writeByHandle(data.id, writeHandler, deviceType + 'C100' + common.getTime());
     }
@@ -89,7 +89,7 @@ exports.onNotify = function BPOnNotify(data) {
         sbp = parseInt(sbp, 16) + dbp;
         let hr = bpData.slice(22, 24);
         hr = parseInt(hr, 16);
-        console.log('xueya', sbp, dbp, hr);
+        console.log(hubMac, 'xueya', sbp, dbp, hr);
         ihealth.saveBP(data.id, sbp, dbp, hr);
         common.writeByHandle(data.id, writeHandler, deviceType + '4000');
         process.send({

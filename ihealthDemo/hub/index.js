@@ -32,14 +32,16 @@ auth()
         watch.onmessage = function watch(e) {
             if (e.data.match('keep-alive')) return;
             let status = JSON.parse(e.data);
-            console.log('hubStatus change', status);
+            console.log('hub status change', status);
             if (toWatch[status.mac] && status.status !== 'online') {
                 exports.stop(status.mac, true)
             }
         };
 
         watch.onerror = function (e) {
-            console.error('watch', e)
+            console.error('watch', e, 'api down')
+            //restart
+            process.exit()
         };
     });
 
@@ -64,6 +66,7 @@ exports.start = function start(mac) {
             if (arg.ok) {
                 resolve()
             } else {
+                console.log(mac, 'hub is offline')
                 exports.stop(mac);
                 reject()
             }
@@ -75,7 +78,7 @@ exports.stop = function stop(mac, isForce) {
     let theHub = hubs[mac];
     if (!theHub) return;
     if (isForce) {
-        console.log('stop', mac);
+        console.log('stop', mac, 'force');
         theHub.removeAllListeners();
         theHub.kill();
         delete hubs[mac];

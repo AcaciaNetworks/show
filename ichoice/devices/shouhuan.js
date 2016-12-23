@@ -12,7 +12,7 @@ exports.onScan = function (data) {
     if (!data.name.match('A40')) return
     if (isConnecting) return
     isConnecting = true
-    console.log('matched A40');
+    console.log(hubMac, 'matched A40');
     let deviceMac = data.bdaddrs[0].bdaddr
     co(function* () {
         targetMap[deviceMac] = true

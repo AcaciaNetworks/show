@@ -26,11 +26,9 @@ exports.onScan = function (data) {
 exports.onNotify = function (data) {
     if (!targetMap[data.id]) return
     var mac = data.id;
-    console.log(data.value, 'kkkkkk');
     var kw = parseInt(data.value.slice(8, 12), 16);
-    console.log(kw, 'kkkkkk');
     kw = kw / 100;
-    console.log('kouwen', kw);
+    console.log(hubMac, 'kouwen', kw);
     //rq({
     //    json: true,
     //    method: 'POST',

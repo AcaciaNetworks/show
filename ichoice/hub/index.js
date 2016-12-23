@@ -32,7 +32,7 @@ auth()
         watch.onmessage = function watch(e) {
             if (e.data.match('keep-alive')) return;
             let status = JSON.parse(e.data);
-            console.log(status);
+            console.log('hub status change', status);
             if (toWatch[status.mac] && status.status !== 'online') {
                 exports.stop(status.mac, true);
             }
@@ -75,7 +75,7 @@ exports.stop = function stop(mac, isForce) {
     let theHub = hubs[mac];
     if (!theHub) return;
     if (isForce) {
-        console.log('stop', mac);
+        console.log('stop', mac, 'force');
         theHub.removeAllListeners();
         theHub.kill();
         delete hubs[mac];
@@ -143,7 +143,7 @@ function initialProcess(mac) {
         }
     });
     theHub.on('exit', function (code, signal) {
-        console.log('exit', code, signal)
+        console.log('exit', code, signal, theHub.mac)
         if (theHub) {
             console.log(theHub.mac)
             delete hubs[theHub.mac]

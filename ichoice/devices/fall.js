@@ -41,7 +41,7 @@ exports.onScan = function (info) {
                     mac: data.id
                 }
             })
-            console.log(theFall.name, '开始测量', ':count:', count)
+            console.log(hubMac, theFall.name, '开始测量', ':count:', count)
         }
     }
 

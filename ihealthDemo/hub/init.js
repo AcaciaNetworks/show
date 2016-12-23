@@ -119,7 +119,7 @@ auth()
         es.onmessage = function (e) {
             if (e.data.match('keep-alive')) return;
             if (e.data.match('offline')) return offlineHandler();
-            console.log('connection state change:', e.data)
+            console.log(hubMac, 'connection state change:', e.data)
         };
         es.onerror = function (e) {
             console.error(hubMac, 'connectState error', e)
