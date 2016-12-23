@@ -137,7 +137,7 @@ exports.readByHandle = function (deviceMac, handle) {
 exports.getTime = function () {
     let now = new Date;
     let timeStr = parseInt(now.getTime() / 1000).toString(16);
-    timeStr += ('0000' + (-now.getTimezoneOffset()).toString(16)).slice(-4);
+    timeStr += ('0000' + Math.abs(-now.getTimezoneOffset()).toString(16)).slice(-4);
     return timeStr
 };
 
@@ -145,4 +145,4 @@ exports.getTime = function () {
 //console.log(exports.toUUID('sed.jiuan.BPAV10'))
 //console.log(exports.toUUID('rec.jiuan.BPAV10', true))
 
-//exports.getTime();
+//console.log(exports.getTime());

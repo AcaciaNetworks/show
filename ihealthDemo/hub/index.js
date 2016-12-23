@@ -123,7 +123,7 @@ exports.addEvent = function addEvent(mac, res) {
             res.end();
         }
         if (arg.type != 'event') return;
-        console.log('event', arg);
+        console.log('event', mac, arg);
         res.push({
             type: 'data',
             data: arg.data
