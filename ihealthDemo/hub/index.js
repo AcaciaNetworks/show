@@ -6,7 +6,7 @@ let EventSource = require('eventsource');
 let req = require('request');
 
 let toWatch = {};
-let cloudAddress = 'http://127.0.0.1:3000';
+let cloudAddress = 'http://api.cassianetworks.com';
 let userId = 'ihealthlabs';
 let secret = '8d8b93bb2d0ff8d9';
 //get token
