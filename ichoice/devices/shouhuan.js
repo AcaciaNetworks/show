@@ -38,21 +38,21 @@ exports.onNotify = function (data) {
         var step = handleStep(data.value);
         if (!step) return;
         console.log("步数::::", step);
-        // rq({
-        //     json: true,
-        //     method: 'POST',
-        //     form: {
-        //         type: 'STEP',
-        //         value: step,
-        //         mac: mac,
-        //         hub_mac: hubMac,
-        //         timestamp: parseInt(Date.now() / 1000)
-        //     },
-        //     url: 'http://www.cooptec.cn/ShangYiJia/getWearableDevice.action'
-        // }, function (err, res, body) {
-        //     console.log('post to shangYiJia sys OK!!!!!!!!', body);
-        //     console.log(err, res.statusCode);
-        // });
+         rq({
+             json: true,
+             method: 'POST',
+             form: {
+                 type: 'STEP',
+                 value: step,
+                 mac: mac,
+                 hub_mac: hubMac,
+                 timestamp: parseInt(Date.now() / 1000)
+             },
+             url: 'http://www.syrjia.com/ShangYiJia/getWearableDevice.action'
+         }, function (err, res, body) {
+             console.log('post to shangYiJia sys OK!!!!!!!!', body);
+             console.log(err, res.statusCode);
+         });
         process.send({
             type: 'event',
             data: {

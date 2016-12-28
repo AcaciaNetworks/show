@@ -9,7 +9,7 @@ var isTarget = "0010";
 var targetMap = {};
 
 exports.onScan = function (data) {
-    if (!data.match('Bioland-BGM')) return
+    if (!data.name.match('Bioland-BGM')) return
     if (isConnecting) return
     isConnecting = true
     console.log('mached xuetang')
@@ -37,21 +37,21 @@ exports.onNotify = function (data) {
     console.log(v0, v2, data.value.length);
     if (data.value.length == 28 && v0 == '55' && v2 == '03') {
         console.log(deviceMac, '血糖：', xy);
-        //rq({
-        //    json: true,
-        //    method: 'POST',
-        //    form: {
-        //        type: 'BG',
-        //        value: xy,
-        //        mac: deviceMac,
-        //        hub_mac: hubMac,
-        //        timestamp: parseInt(Date.now() / 1000)
-        //    },
-        //    url: 'http://www.cooptec.cn/ShangYiJia/getWearableDevice.action'
-        //}, function (err, res, body) {
-        //    console.log('post to shangYiJia sys OK!!!!!!!!', body);
-        //    console.log(err, res.statusCode);
-        //});
+        rq({
+            json: true,
+            method: 'POST',
+            form: {
+                type: 'BG',
+                value: xy,
+                mac: deviceMac,
+                hub_mac: hubMac,
+                timestamp: parseInt(Date.now() / 1000)
+            },
+            url: 'http://www.syrjia.com/ShangYiJia/getWearableDevice.action'
+        }, function (err, res, body) {
+            console.log('post to shangYiJia sys OK!!!!!!!!', body);
+            console.log(err, res.statusCode);
+        });
         process.send({
             type: 'event',
             data: {
@@ -63,6 +63,6 @@ exports.onNotify = function (data) {
     } else {
         console.log('again 18');
         //要数据
-        common.writeByHandler(deviceMac, '18', '5A0B050E0B080C12A90000')
+        common.writeByHandle(deviceMac, '18', '5A0B050E0B080C12A90000')
     }
 }

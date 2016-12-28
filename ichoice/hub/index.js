@@ -6,7 +6,7 @@ let EventSource = require('eventsource');
 let req = require('request');
 
 let toWatch = {};
-let cloudAddress = 'http://api.cassianetworks.com';
+let cloudAddress = 'http://demo.cassianetworks.com';
 let userId = 'xin';
 let secret = '0bda052bf4403a5f';
 //get token
@@ -25,6 +25,7 @@ function auth() {
         })
     })
 }
+//
 
 auth()
     .then(token=> {
