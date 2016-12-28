@@ -86,6 +86,7 @@ exports.stop = function stop(mac, isForce) {
         delete hubs[mac];
         theHub = null
         resArr.forEach(function (res) {
+            if (res.mac != mac) return
             res.push({
                 type: 'offline'
             });
@@ -103,6 +104,7 @@ exports.stop = function stop(mac, isForce) {
         delete hubs[mac];
         theHub = null
         resArr.forEach(function (res) {
+            if (res.mac != mac) return
             res.push({
                 type: 'offline'
             });
@@ -121,7 +123,7 @@ exports.addEvent = function addEvent(mac, res) {
     }
 
     theHub.on('message', arg => {
-        if (arg.type == 'offline') {
+        if (arg.type == 'offline' && arg.mac == mac) {
             res.push({
                 type: 'offline'
             });
