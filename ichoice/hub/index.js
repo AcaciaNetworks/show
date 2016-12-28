@@ -121,7 +121,7 @@ exports.addEvent = function addEvent(mac, res) {
     }
 
     theHub.on('message', arg => {
-        if (arg.type == 'offline') {
+        if (arg.type == 'offline' && arg.mac == mac) {
             res.push({
                 type: 'offline'
             });

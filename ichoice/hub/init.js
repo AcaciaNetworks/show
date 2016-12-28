@@ -149,6 +149,7 @@ auth()
 
 function offlineHandler() {
     process.send({
-        type: 'offline'
+        type: 'offline',
+        mac: hubMac
     })
 }
