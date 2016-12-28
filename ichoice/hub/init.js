@@ -21,10 +21,11 @@ devices.push(require('../devices/weight'))
 devices.push(require('../devices/bbt'))
 devices.push(require('../devices/bp'))
 devices.push(require('../devices/ecg'))
-// devices.push(require('../devices/xindian'));
-// devices.push(require('../devices/xueya'));
-// devices.push(require('../devices/xuetang'));
-// devices.push(require('../devices/kouwen'));
+
+ //devices.push(require('../devices/xindian'));
+ devices.push(require('../devices/xueya'));
+ devices.push(require('../devices/xuetang'));
+ devices.push(require('../devices/kouwen'));
 
 //handler message from parent
 process.on('message', arg => {
@@ -148,6 +149,7 @@ auth()
 
 function offlineHandler() {
     process.send({
-        type: 'offline'
+        type: 'offline',
+        mac: hubMac
     })
 }

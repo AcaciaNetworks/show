@@ -10,7 +10,7 @@ var targetMap = {};
 var connected = {}
 
 exports.onScan = function (data) {
-    if (!(data.adData || data.scanData).match(isTarget)) return
+    if (!(data.name || data.name).match(isTarget)) return
     if (isConnecting) return
     isConnecting = true
     console.log('kouwen matched');
@@ -28,7 +28,23 @@ exports.onNotify = function (data) {
     var mac = data.id;
     var kw = parseInt(data.value.slice(8, 12), 16);
     kw = kw / 100;
-    console.log(hubMac, 'kouwen', kw);
+    console.log('kouwen', kw);
+    rq({
+        json: true,
+        method: 'POST',
+        form: {
+            type: 'TEMP',
+            value: kw,
+            mac: mac,
+            hub_mac: hubMac,
+            timestamp: parseInt(Date.now() / 1000)
+        },
+        url: 'http://www.syrjia.com/ShangYiJia/getWearableDevice.action'
+    }, function (err, res, body) {
+        console.log('post to shangYiJia sys OK!!!!!!!!', body);
+        console.log(err, res.statusCode);
+    });
+    //console.log(hubMac, 'kouwen', kw);
     //rq({
     //    json: true,
     //    method: 'POST',

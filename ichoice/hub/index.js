@@ -26,6 +26,7 @@ function auth() {
         })
     })
 }
+//
 
 auth()
     .then(token => {
@@ -36,6 +37,9 @@ auth()
             console.log('hub status change', status);
             if (toWatch[status.mac] && status.status !== 'online') {
                 exports.stop(status.mac, true);
+            } else {
+                exports.stop(status.mac, true)
+                exports.start(status.mac)
             }
         };
 
@@ -117,7 +121,7 @@ exports.addEvent = function addEvent(mac, res) {
     }
 
     theHub.on('message', arg => {
-        if (arg.type == 'offline') {
+        if (arg.type == 'offline' && arg.mac == mac) {
             res.push({
                 type: 'offline'
             });
