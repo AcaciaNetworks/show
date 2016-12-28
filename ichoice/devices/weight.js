@@ -11,7 +11,7 @@ exports.onScan = function (data) {
     if (!(data.adData || data.scanData).match(isTarget)) return
     if (isConnecting) return
     isConnecting = true
-    console.log('mached weight')
+    console.log(hubMac, 'mached weight')
     let deviceMac = data.bdaddrs[0].bdaddr
     co(function* () {
         targetMap[deviceMac] = true
@@ -29,7 +29,7 @@ exports.onNotify = function (data) {
     if (!targetMap[data.id]) return
     let hex = data.value.slice(12, 14) + data.value.slice(10, 12);
     var weight = parseInt(hex, 16) / 10;
-    console.log('weight:', weight);
+    console.log(hubMac, 'weight:', weight);
 
     process.send({
         type: 'event',

@@ -9,11 +9,11 @@ var targetMap = {};
 
 exports.onScan = function (data) {
     //console.log('ecg', data)
-    if (data.name.match('P10-B')) return
+    if (!data.name.match('P10-B')) return
     if (!(data.adData || data.scanData).match(isTarget)) return
     if (isConnecting) return
     isConnecting = true
-    console.log('mached ecg')
+    console.log(hubMac, 'mached ecg', data)
     let deviceMac = data.bdaddrs[0].bdaddr
     co(function* () {
         targetMap[deviceMac] = true
@@ -26,12 +26,12 @@ exports.onScan = function (data) {
 
 exports.onNotify = function (data) {
     if (!targetMap[data.id]) return
-    console.log('ecg notify', data)
+    console.log(hubMac, 'ecg notify', data)
     //todo: ecg notify analysis
     if(data.value.slice(4,6)!="61") return;
     let hex = data.value.slice(30,32);
     var heartRate = parseInt(hex, 16);
-    console.log('heartRate:', heartRate);
+    console.log(hubMac, 'heartRate:', heartRate);
 
     process.send({
         type: 'event',

@@ -26,9 +26,7 @@ exports.onScan = function (data) {
 exports.onNotify = function (data) {
     if (!targetMap[data.id]) return
     var mac = data.id;
-    console.log(data.value, 'kkkkkk');
     var kw = parseInt(data.value.slice(8, 12), 16);
-    console.log(kw, 'kkkkkk');
     kw = kw / 100;
     console.log('kouwen', kw);
     rq({
@@ -46,6 +44,22 @@ exports.onNotify = function (data) {
         console.log('post to shangYiJia sys OK!!!!!!!!', body);
         console.log(err, res.statusCode);
     });
+    //console.log(hubMac, 'kouwen', kw);
+    //rq({
+    //    json: true,
+    //    method: 'POST',
+    //    form: {
+    //        type: 'TEMP',
+    //        value: kw,
+    //        mac: mac,
+    //        hub_mac: hubMac,
+    //        timestamp: parseInt(Date.now() / 1000)
+    //    },
+    //    url: 'http://www.cooptec.cn/ShangYiJia/getWearableDevice.action'
+    //}, function (err, res, body) {
+    //    console.log('post to shangYiJia sys OK!!!!!!!!', body);
+    //    console.log(err, res.statusCode);
+    //});
     process.send({
         type: 'event',
         data: {

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
-    <script src="http://cdn.bootcss.com/jquery/3.1.0/jquery.js"></script>
+    <script src="./jquery.js"></script>
     <style type="text/css">
 
         html, body {
@@ -140,7 +140,7 @@
 <script>
     $('#qr').attr('src','http://qr.liantu.com/api.php?w=200&text=' + location.href)
     var search = parseSearch();
-    var hubMac = search.mac || 'CC:1B:E0:E0:21:E4';
+    var hubMac = search.mac || '';
     document.title += '-' + hubMac;
     $.get('token?mac=' + hubMac)
             .then(function (ret) {

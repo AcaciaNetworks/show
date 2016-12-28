@@ -6,9 +6,10 @@ let EventSource = require('eventsource');
 let req = require('request');
 
 let toWatch = {};
-let cloudAddress = 'http://demo.cassianetworks.com';
-let userId = 'xin';
-let secret = '0bda052bf4403a5f';
+
+let cloudAddress = 'http://api.cassianetworks.com';
+let userId = 'ihealthlabs';
+let secret = '8d8b93bb2d0ff8d9';
 //get token
 function auth() {
     return new Promise(function (resolve, reject) {
@@ -18,7 +19,7 @@ function auth() {
             headers: {
                 Authorization: 'Basic ' + new Buffer(userId + ':' + secret, 'ascii').toString('base64')
             },
-            body: {grant_type: 'client_credentials'}
+            body: { grant_type: 'client_credentials' }
         }, function (err, res, body) {
             if (err) return reject(err);
             resolve(body.access_token)
@@ -28,14 +29,14 @@ function auth() {
 //
 
 auth()
-    .then(token=> {
+    .then(token => {
         let watch = new EventSource(`${cloudAddress}/cassia/hubStatus?access_token=${token}`);
         watch.onmessage = function watch(e) {
             if (e.data.match('keep-alive')) return;
             let status = JSON.parse(e.data);
-            console.log(status);
-            if (toWatch[status.mac] && status.status == 'online') {
-                exports.start(status.mac);
+            console.log('hub status change', status);
+            if (toWatch[status.mac] && status.status !== 'online') {
+                exports.stop(status.mac, true);
             }
         };
 
@@ -55,12 +56,12 @@ exports.start = function start(mac) {
     } else {
         theHub.count++;
     }
-    return new Promise((resolve, reject)=> {
+    return new Promise((resolve, reject) => {
         theHub.send({
             type: 'token'
         });
         theHub.on('message', function tokenHandler(arg) {
-            if (arg.type != 'tokenHandler')  return;
+            if (arg.type != 'tokenHandler') return;
             theHub.removeListener('message', tokenHandler);
             if (arg.ok) {
                 resolve()
@@ -72,9 +73,24 @@ exports.start = function start(mac) {
     })
 };
 
-exports.stop = function stop(mac) {
+exports.stop = function stop(mac, isForce) {
     let theHub = hubs[mac];
     if (!theHub) return;
+    if (isForce) {
+        console.log('stop', mac, 'force');
+        theHub.removeAllListeners();
+        theHub.kill();
+        delete hubs[mac];
+        theHub = null
+        resArr.forEach(function (res) {
+            res.push({
+                type: 'offline'
+            });
+            res.end();
+        })
+        resArr = []
+        return
+    }
     console.log('hub count', theHub.count);
     theHub.count--;
     if (theHub.count < 1) {
@@ -83,16 +99,25 @@ exports.stop = function stop(mac) {
         theHub.kill();
         delete hubs[mac];
         theHub = null
+        resArr.forEach(function (res) {
+            res.push({
+                type: 'offline'
+            });
+            res.end();
+        })
+        resArr = []
     }
 };
 
+let resArr = []
 exports.addEvent = function addEvent(mac, res) {
+    resArr.push(res)
     let theHub = hubs[mac];
     if (!theHub) {
         theHub = initialProcess(mac);
     }
 
-    theHub.on('message', arg=> {
+    theHub.on('message', arg => {
         if (arg.type == 'offline') {
             res.push({
                 type: 'offline'
@@ -100,7 +125,7 @@ exports.addEvent = function addEvent(mac, res) {
             res.end();
         }
         if (arg.type != 'event') return;
-        console.log('event', arg);
+        console.log('event', mac, arg);
         res.push({
             type: 'data',
             data: arg.data
@@ -114,13 +139,13 @@ function initialProcess(mac) {
     theHub.mac = mac
     theHub.count = 1;
 
-    theHub.on('message', arg=> {
+    theHub.on('message', arg => {
         if (arg.type == 'offline') {
             exports.stop(mac);
         }
     });
     theHub.on('exit', function (code, signal) {
-        console.log('exit', code, signal)
+        console.log('exit', code, signal, theHub.mac)
         if (theHub) {
             console.log(theHub.mac)
             delete hubs[theHub.mac]

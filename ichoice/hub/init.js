@@ -121,8 +121,9 @@ auth()
         //listen connection change
         let es = new EventSource(cloudAddress + '/management/nodes/connection-state?mac=' + hubMac, { headers });
         es.onmessage = function (e) {
+            if (e.data.match('keep-alive')) return;
             if (e.data.match('offline')) return offlineHandler();
-            console.log('connection state change:', e.data)
+            console.log(hubMac, 'connection state change:', e.data)
         };
         es.onerror = function (e) {
             console.error('connection state', e)
@@ -133,9 +134,15 @@ auth()
         notifyEs.onmessage = function (e) {
             if (e.data.match(':keep-alive')) return;
             if (e.data.match('offline')) return offlineHandler();
-            let data = JSON.parse(e.data);
+            let notifyData
+            try {
+                notifyData = JSON.parse(e.data)
+            } catch (err) {
+                console.error('json parse err', e.data)
+                return
+            }
             devices.forEach(d => {
-                d.onNotify(data)
+                d.onNotify(notifyData)
             })
         }
     });

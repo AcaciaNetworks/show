@@ -29,7 +29,7 @@ app.get('/token', function (req, res) {
         })
 });
 
-hub.start(defaultHub)
+//hub.start(defaultHub)
 
 app.get('/event', function (req, res) {
     var hubMac = req.query.mac || defaultHub;

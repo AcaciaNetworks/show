@@ -11,7 +11,7 @@ exports.onScan = function (data) {
     if (!(data.adData || data.scanData).match(isTarget)) return
     if (isConnecting) return;
     isConnecting = true
-    console.log('mached bbt')
+    console.log(hubMac, 'mached bbt')
     let deviceMac = data.bdaddrs[0].bdaddr
     co(function* () {
         targetMap[deviceMac] = true
@@ -31,7 +31,7 @@ exports.onNotify = function (data) {
     if(data.value.slice(6,8) != "bb") return;
     let hex = data.value.slice(8, 12);
     var temp = parseInt(hex, 16) / 100;
-    console.log('temp:', temp);
+    console.log(hubMac, 'temp:', temp);
 
     process.send({
         type: 'event',

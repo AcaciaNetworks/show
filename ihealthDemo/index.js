@@ -4,10 +4,10 @@
 let express = require('express');
 
 let app = express();
-let port = 8888;
+let port = 9998;
 
 app.listen(port, function () {
-    console.log('listening on port: ', port)
+    console.log('ihealth listening on port: ', port)
 });
 
 let hub = require('./hub');
@@ -23,7 +23,7 @@ app.get('/token', function (req, res) {
         })
 });
 
-hub.start('CC:1B:E0:E0:21:E4');
+// hub.start('CC:1B:E0:E0:21:E4');
 //hub.start('CC:1B:E0:E0:16:34');
 
 //server-side-event

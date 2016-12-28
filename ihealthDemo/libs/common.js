@@ -66,8 +66,8 @@ exports.hexToString = function hexToString(str) {
  * @param {String} [type]
  * */
 exports.connect = function connect(deviceMac, deviceType, deviceProtocol, type) {
-    console.log('connect', deviceMac);
-    return new Promise((resolve, reject)=> {
+    console.log('real connect', deviceMac);
+    return new Promise((resolve, reject) => {
         let t = setTimeout(reject, 30000);
         req.post('/gap/nodes/' + deviceMac + '/connection', {
             body: {
@@ -79,9 +79,15 @@ exports.connect = function connect(deviceMac, deviceType, deviceProtocol, type) 
         }, function (err, res, body) {
             t && clearTimeout(t);
             isConnecting = false;
-            console.log(err, body, 'connect');
-            if (err || res.statusCode !== 200) reject(err + '-' + res.statusCode + '-' + body);
-            resolve();
+            if (err) {
+                console.error('connect error', deviceMac, err)
+                return reject(err)
+            }
+            if (res.statusCode !== 200) {
+                reject(res.statusCode + '-' + body)
+            } else {
+                resolve()
+            }
         })
     });
 };
@@ -103,7 +109,7 @@ exports.writeByHandle = function (deviceMac, handle, value) {
             console.log('write handle', ret, handle, value);
         })
         .catch(function (e) {
-            console.error(e);
+            console.error('writeByHandle err', deviceMac, handle, value, e);
         })
 };
 
@@ -124,14 +130,14 @@ exports.readByHandle = function (deviceMac, handle) {
             return ret;
         })
         .catch(function (e) {
-            console.error(e);
+            console.error('readByHandle', deviceMac, handle ,e);
         })
 };
 
 exports.getTime = function () {
     let now = new Date;
     let timeStr = parseInt(now.getTime() / 1000).toString(16);
-    timeStr += ('0000' + (-now.getTimezoneOffset()).toString(16)).slice(-4);
+    timeStr += ('0000' + Math.abs(-now.getTimezoneOffset()).toString(16)).slice(-4);
     return timeStr
 };
 
@@ -139,4 +145,4 @@ exports.getTime = function () {
 //console.log(exports.toUUID('sed.jiuan.BPAV10'))
 //console.log(exports.toUUID('rec.jiuan.BPAV10', true))
 
-//exports.getTime();
+//console.log(exports.getTime());
