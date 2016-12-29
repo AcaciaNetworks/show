@@ -91,8 +91,8 @@ exports.stop = function stop(mac, isForce) {
                 type: 'offline'
             });
             res.end();
+            rmRes(res)
         })
-        resArr = []
         return
     }
     console.log('hub count', theHub.count);
@@ -109,13 +109,20 @@ exports.stop = function stop(mac, isForce) {
                 type: 'offline'
             });
             res.end();
+            rmRes(res)
         })
-        resArr = []
     }
 };
 
 let resArr = []
+function rmRes(r) {
+    let i = resArr.indexOf(r)
+    if (1 > -1) {
+        resArr.splice(i, 1)
+    }
+}
 exports.addEvent = function addEvent(mac, res) {
+    res.mac = mac
     resArr.push(res)
     let theHub = hubs[mac];
     if (!theHub) {
