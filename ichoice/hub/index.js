@@ -86,6 +86,7 @@ exports.stop = function stop(mac, isForce) {
         delete hubs[mac];
         theHub = null
         resArr.forEach(function (res) {
+            if (res.mac != mac) return
             res.push({
                 type: 'offline'
             });
@@ -103,6 +104,7 @@ exports.stop = function stop(mac, isForce) {
         delete hubs[mac];
         theHub = null
         resArr.forEach(function (res) {
+            if (res.mac != mac) return
             res.push({
                 type: 'offline'
             });
