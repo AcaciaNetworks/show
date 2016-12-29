@@ -52,7 +52,7 @@ exports.saveBP = function saveBP(mac, sbp, dbp, hr) {
     request.post('https://api.ihealthlabs.com.cn:8443/api5/anonymousbp_upload.htm', {
         form
     }, (err, res, body)=> {
-        console.log('bp', err, res.statusCode, body)
+        console.log('bp', err, res && res.statusCode, body)
     })
 };
 
@@ -98,7 +98,7 @@ exports.saveXueYang = function saveWeight(mac, xy, hr) {
     request.post('https://api.ihealthlabs.com.cn:8443/api5/anonymousoxygen_upload.ashx', {
         form
     }, (err, res, body)=> {
-        console.log('xueYang', err, res.statusCode, body)
+        console.log('xueYang', err, res && res.statusCode, body)
     })
 };
 
@@ -145,7 +145,7 @@ exports.saveWeight = function saveWeight(mac, weight) {
     request.post('https://api.ihealthlabs.com.cn:8443/api5/anonymousweight_upload.htm', {
         form
     }, (err, res, body)=> {
-        console.log('weight', err, res.statusCode, body)
+        console.log('weight', err, res && res.statusCode, body)
     })
 };
 
