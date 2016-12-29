@@ -26,7 +26,6 @@ function auth() {
         })
     })
 }
-//
 
 auth()
     .then(token => {
@@ -36,7 +35,7 @@ auth()
             let status = JSON.parse(e.data);
             console.log('hub status change', status);
             if (toWatch[status.mac] && status.status !== 'online') {
-                exports.stop(status.mac, true);
+                exports.stop(status.mac, true)
             } else {
                 exports.stop(status.mac, true)
                 exports.start(status.mac)
@@ -44,7 +43,9 @@ auth()
         };
 
         watch.onerror = function (e) {
-            console.error('watch', e)
+            console.error('watch', e, 'api down')
+            //restart
+            process.exit()
         };
     });
 
@@ -117,7 +118,7 @@ exports.stop = function stop(mac, isForce) {
 let resArr = []
 function rmRes(r) {
     let i = resArr.indexOf(r)
-    if (1 > -1) {
+    if (i > -1) {
         resArr.splice(i, 1)
     }
 }
