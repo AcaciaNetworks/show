@@ -50,7 +50,7 @@ exports.onNotify = function (data) {
              url: 'http://www.syrjia.com/ShangYiJia/getWearableDevice.action'
          }, function (err, res, body) {
              console.log('post to shangYiJia sys OK!!!!!!!!', body);
-             console.log(err, res.statusCode);
+             console.log(err, res && res.statusCode);
          });
          rq({
              json: true,
@@ -65,7 +65,7 @@ exports.onNotify = function (data) {
              url: 'http://www.syrjia.com/ShangYiJia/getWearableDevice.action'
          }, function (err, res, body) {
              console.log('post to shangYiJia sys OK!!!!!!!!', body);
-             console.log(err, res.statusCode);
+             console.log(err, res && res.statusCode);
          });
         process.send({
             type: 'event',

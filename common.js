@@ -78,7 +78,10 @@ exports.connect = function connect(deviceMac, type) {
             t && clearTimeout(t);
             isConnecting = false;
             console.log(err, body, 'connect');
-            if (err || res.statusCode !== 200) reject(err + '-' + res.statusCode + '-' + body);
+            if(err) {
+                return reject(err)
+            }
+            if (res.statusCode !== 200) reject(err + '-' + res.statusCode + '-' + body);
             resolve();
         })
     });

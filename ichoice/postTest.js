@@ -25,7 +25,7 @@ var postOption = {
 };
 rq(postOption, function (err, res, body) {
     console.log('post to rendering sys OK!!!!!!!!', body)
-    console.log(err, res.statusCode);
+    console.log(err, res && res.statusCode);
 });
 
 //console.log(postOption);
