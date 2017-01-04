@@ -1,7 +1,7 @@
 /**
  * Created by zhaosc on 9/20/16.
  */
-let process = require('child_process');
+let cProcess = require('child_process');
 let EventSource = require('eventsource');
 let req = require('request');
 
@@ -149,7 +149,7 @@ exports.addEvent = function addEvent(mac, res) {
 
 function initialProcess(mac) {
     let theHub;
-    theHub = hubs[mac] = process.fork(__dirname + '/init.js', [mac, userId, secret, cloudAddress]);
+    theHub = hubs[mac] = cProcess.fork(__dirname + '/init.js', [mac, userId, secret, cloudAddress]);
     theHub.mac = mac
     theHub.count = 1;
 
