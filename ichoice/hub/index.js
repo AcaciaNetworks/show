@@ -1,13 +1,13 @@
 /**
  * Created by zhaosc on 9/20/16.
  */
-let process = require('child_process');
+let cProcess = require('child_process');
 let EventSource = require('eventsource');
 let req = require('request');
 
 let toWatch = {};
-// let cloudAddress = 'http://api.cassianetworks.com';
-let cloudAddress = 'http://127.0.0.1:3000';
+let cloudAddress = 'http://api.cassianetworks.com';
+// let cloudAddress = 'http://127.0.0.1:3000';
 let userId = 'ihealthlabs';
 let secret = '8d8b93bb2d0ff8d9';
 //get token
@@ -148,7 +148,7 @@ exports.addEvent = function addEvent(mac, res) {
 
 function initialProcess(mac) {
     let theHub;
-    theHub = hubs[mac] = process.fork(__dirname + '/init.js', [mac, userId, secret, cloudAddress]);
+    theHub = hubs[mac] = cProcess.fork(__dirname + '/init.js', [mac, userId, secret, cloudAddress]);
     theHub.mac = mac
     theHub.count = 1;
 
