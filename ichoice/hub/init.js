@@ -7,6 +7,10 @@ global.hubMac = process.argv[2];
 global.userId = process.argv[3];
 global.secret = process.argv[4];
 global.cloudAddress = process.argv[5];
+global.receiveUrl = process.argv[6];
+if (receiveUrl == 'undefined') {
+    global.receiveUrl = false
+}
 global.headers = {
     Authorization: 'Basic ' + new Buffer(userId + ':' + secret, 'ascii').toString('base64')
 };

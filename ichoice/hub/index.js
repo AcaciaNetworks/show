@@ -52,11 +52,11 @@ auth()
 
 let hubs = {};
 
-exports.start = function start(mac) {
+exports.start = function start(mac, receiveUrl) {
     toWatch[mac] = true;
     let theHub = hubs[mac];
     if (!theHub) {
-        theHub = initialProcess(mac);
+        theHub = initialProcess(mac, receiveUrl);
     } else {
         theHub.count++;
     }
@@ -146,9 +146,9 @@ exports.addEvent = function addEvent(mac, res) {
     })
 };
 
-function initialProcess(mac) {
+function initialProcess(mac, receiveUrl) {
     let theHub;
-    theHub = hubs[mac] = cProcess.fork(__dirname + '/init.js', [mac, userId, secret, cloudAddress]);
+    theHub = hubs[mac] = cProcess.fork(__dirname + '/init.js', [mac, userId, secret, cloudAddress, receiveUrl]);
     theHub.mac = mac
     theHub.count = 1;
 

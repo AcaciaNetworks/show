@@ -157,7 +157,7 @@
     var hubMac = search.mac || '';
     hubMac = hubMac.toUpperCase()
     document.title += '-' + hubMac;
-    $.get('token?mac=' + hubMac)
+    $.get('token?mac=' + hubMac + '&callback=' + search.callback|| '')
             .then(function (ret) {
                 if (ret.match('offline')) {
                     hubOffline();
