@@ -84,7 +84,7 @@ exports.connect = function connect(deviceMac, deviceType, deviceProtocol, type) 
                 return reject(err)
             }
             if (res.statusCode !== 200) {
-                reject(res.statusCode + '-' + body)
+                reject(res.statusCode + '-' + JSON.stringify(body))
             } else {
                 resolve()
             }

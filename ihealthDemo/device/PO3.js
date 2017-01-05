@@ -38,7 +38,7 @@ exports.onScan = function PO3OnScan(data) {
                 getWriteHandler(deviceMac);
             }).catch(function (e) {
                 if (e == 'busy') return;
-                console.error('connect error')
+                console.error('connect error', e)
             });
     }
 };

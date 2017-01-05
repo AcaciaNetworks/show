@@ -39,7 +39,7 @@ exports.onScan = function HS4OnScan(data) {
                 getWriteHandler(deviceMac);
 
             }).catch(function (e) {
-                console.error('connect error')
+                console.error('connect error', e)
             });
     }
 };
