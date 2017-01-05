@@ -57,7 +57,7 @@ process.on('message', arg => {
 //get token
 function auth() {
     auth.t && clearTimeout(auth.t);
-    auth.t = setTimeout(auth, 100 * 60 * 1000);
+    auth.t = setTimeout(auth, 50 * 60 * 1000);
     headers.Authorization = 'Basic ' + new Buffer(userId + ':' + secret, 'ascii').toString('base64');
     global.req = request.defaults({
         baseUrl: cloudAddress,
