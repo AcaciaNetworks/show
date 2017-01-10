@@ -142,6 +142,9 @@
 		</div>
 		<div class="sub">
 			<h2>Others</h2>
+			<div class="others">
+
+			</div>
 		</div>
 		<div class="sub">
 			<h2>About</h2>
@@ -187,7 +190,11 @@
         if (!device.length) {
             device = $(deviceTpl);
             device.attr('id', id);
-            typeArea.append(device);
+			if (typeArea.length) {
+            	typeArea.append(device);				
+			} else {
+				$('.others').append(device)
+			}
         }
         device.find('.mac').text(data.mac);
         device.find('.value').text(data.value)
