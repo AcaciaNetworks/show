@@ -30,30 +30,20 @@ exports.onNotify = function (data) {
         var dy = parseInt(data.value.slice(8, 10), 16);
         var mb = parseInt(data.value.slice(10, 12), 16);
         console.log(deviceMac, '高压：', gy, '低压', dy, '脉搏', mb);
-        if (receiveUrl) {
-            rq({
-                json: true,
-                method: 'POST',
-                form: {
-                    type: 'BP',
-                    value: gy + ':' + dy + ':' + mb,
-                    mac: deviceMac,
-                    hub_mac: hubMac,
-                    timestamp: parseInt(Date.now() / 1000)
-                },
-                url: receiveUrl
-            }, function (err, res, body) {
-                console.log('post to ', receiveUrl, err, body, res && res.statusCode);
-
-            });
-        }
         process.send({
             type: 'event',
             data: {
                 device: 'xueya',
                 value: '高压(SBP ):' + gy + '低压(DBP):' + dy + '脉搏(hr):' + mb,
                 mac: data.id
-            }
+            },
+            postData: [{
+                type: 'BP',
+                value: gy + ':' + dy + ':' + mb,
+                mac: deviceMac,
+                hub_mac: hubMac,
+                timestamp: parseInt(Date.now() / 1000)
+            }]
         })
     }
 }

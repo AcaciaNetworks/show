@@ -37,30 +37,20 @@ exports.onNotify = function (data) {
     console.log(v0, v2, data.value.length);
     if (data.value.length == 28 && v0 == '55' && v2 == '03') {
         console.log(deviceMac, '血糖：', xy);
-        if (receiveUrl) {
-            rq({
-                json: true,
-                method: 'POST',
-                form: {
-                    type: 'BG',
-                    value: xy,
-                    mac: deviceMac,
-                    hub_mac: hubMac,
-                    timestamp: parseInt(Date.now() / 1000)
-                },
-                url: receiveUrl
-            }, function (err, res, body) {
-                console.log('post to ', receiveUrl, err, body, res && res.statusCode);
-
-            });
-        }
         process.send({
             type: 'event',
             data: {
                 device: 'xuetang',
                 value: '血糖(Blood Glucose)：' + xy,
                 mac: data.id
-            }
+            },
+            postData: [{
+                type: 'BG',
+                value: xy,
+                mac: deviceMac,
+                hub_mac: hubMac,
+                timestamp: parseInt(Date.now() / 1000)
+            }]
         })
     } else {
         console.log('again 18');

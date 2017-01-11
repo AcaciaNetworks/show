@@ -20,7 +20,7 @@ let hub = require('./hub')
 //refresh token
 app.get('/token', function (req, res) {
     let hubMac = req.query.mac || defaultHub
-    hub.start(hubMac, req.query.callback)
+    hub.start(hubMac)
         .then(()=> {
             res.end('')
         })
@@ -34,7 +34,7 @@ app.get('/token', function (req, res) {
 app.get('/event', function (req, res) {
     var hubMac = req.query.mac || defaultHub;
     sse(res);
-    hub.addEvent(hubMac, res);
+    hub.addEvent(hubMac, res, req.query.callback || '');
     res.on('close', ()=> {
         console.log('client closed', hubMac);
         hub.stop(hubMac)

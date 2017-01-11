@@ -52,11 +52,11 @@ auth()
 
 let hubs = {};
 
-exports.start = function start(mac, receiveUrl) {
+exports.start = function start(mac) {
     toWatch[mac] = true;
     let theHub = hubs[mac];
     if (!theHub) {
-        theHub = initialProcess(mac, receiveUrl);
+        theHub = initialProcess(mac);
     } else {
         theHub.count++;
     }
@@ -122,14 +122,14 @@ function rmRes(r) {
         resArr.splice(i, 1)
     }
 }
-exports.addEvent = function addEvent(mac, res) {
+exports.addEvent = function addEvent(mac, res, callback) {
     res.mac = mac
     resArr.push(res)
     let theHub = hubs[mac];
     if (!theHub) {
         theHub = initialProcess(mac);
     }
-
+    console.log(mac, callback, 'eventsource')
     theHub.on('message', arg => {
         if (arg.type == 'offline' && arg.mac == mac) {
             res.push({
@@ -143,12 +143,24 @@ exports.addEvent = function addEvent(mac, res) {
             type: 'data',
             data: arg.data
         });
+        if (callback && arg.postData) {
+            arg.postData.forEach(function (d) {
+                req({
+                    json: true,
+                    method: 'POST',
+                    form: d,
+                    url: callback
+                }, function (err, res, body) {
+                    console.log('post to ', callback, err, body, res && res.statusCode);
+                });
+            })
+        }
     })
 };
 
-function initialProcess(mac, receiveUrl) {
+function initialProcess(mac) {
     let theHub;
-    theHub = hubs[mac] = cProcess.fork(__dirname + '/init.js', [mac, userId, secret, cloudAddress, receiveUrl]);
+    theHub = hubs[mac] = cProcess.fork(__dirname + '/init.js', [mac, userId, secret, cloudAddress]);
     theHub.mac = mac
     theHub.count = 1;
 

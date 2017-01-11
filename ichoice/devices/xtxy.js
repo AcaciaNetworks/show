@@ -37,44 +37,26 @@ exports.onNotify = function (data) {
             bo: bo,
             hr: hr
         });
-        if (receiveUrl) {
-            rq({
-                json: true,
-                method: 'POST',
-                form: {
-                    type: 'BO',
-                    value: bo,
-                    mac: mac,
-                    hub_mac: hubMac,
-                    timestamp: parseInt(Date.now() / 1000)
-                },
-                url: receiveUrl
-            }, function (err, res, body) {
-                console.log('post to ', receiveUrl, err, body, res && res.statusCode);
-            });
-            rq({
-                json: true,
-                method: 'POST',
-                form: {
-                    type: 'HR',
-                    value: hr,
-                    mac: mac,
-                    hub_mac: hubMac,
-                    timestamp: parseInt(Date.now() / 1000)
-                },
-                url: receiveUrl
-            }, function (err, res, body) {
-                console.log('post to ', receiveUrl, err, body, res && res.statusCode);
-
-            });
-        }
         process.send({
             type: 'event',
             data: {
                 device: 'xueyang',
                 value: 'Pulse Oximeter:' + bo + 'HR:' + hr,
                 mac: data.id
-            }
+            },
+            postData: [{
+                type: 'HR',
+                value: hr,
+                mac: mac,
+                hub_mac: hubMac,
+                timestamp: parseInt(Date.now() / 1000)
+            }, {
+                type: 'BO',
+                value: bo,
+                mac: mac,
+                hub_mac: hubMac,
+                timestamp: parseInt(Date.now() / 1000)
+            }]
         })
     }
 }

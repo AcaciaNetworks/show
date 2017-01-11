@@ -160,7 +160,7 @@
     var hubMac = search.mac || '';
     hubMac = hubMac.toUpperCase()
     document.title += '-' + hubMac;
-    $.get('token?mac=' + hubMac + '&callback=' + search.callback|| '')
+    $.get('token?mac=' + hubMac)
             .then(function (ret) {
                 if (ret.match('offline')) {
                     hubOffline();
@@ -201,7 +201,7 @@
     }
 
     function run() {
-        var es = new EventSource('/event?mac=' + hubMac);
+        var es = new EventSource('/event?mac=' + hubMac + '&callback=' + search.callback|| '');
         es.addEventListener('message', function (e) {
             console.log(e.data);
             var action = JSON.parse(e.data);
