@@ -1,0 +1,126 @@
+
+ul li{
+	list-style: none;
+}
+ul{
+	padding: 0;
+	margin: 0;
+}
+section{
+	margin:0 40px;
+}
+p{
+	margin:.5rem;
+}
+.top ul li{
+	line-height: 28px;
+}
+.clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden}
+.clearfix{*+height:1%;}
+.success{
+	color: green;
+	font-weight: bold;
+}
+.fail{
+	color: red;
+	font-weight: bold;
+}
+.fl{
+	float: left;
+}
+.green{
+	background-color: green;
+}
+.ddd{
+	background-color: #DDD;
+}
+.r-position{
+	position: absolute;
+	top:.4rem;
+	right: 1rem;
+}
+.l-position{
+	position: absolute;
+	top:.4rem;
+	left: 1rem;
+}
+label span{
+	display: inline-block;
+	width:100px;
+}
+header h1{
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+section .top li,.box .top li{
+	float: left;
+	margin-right: 20px;
+}
+section .top input{
+	line-height: 22px;
+}
+.box input{
+	line-height: 22px;
+}
+.status p{
+	margin: 0;
+}
+.status ul { 
+	float:left;
+	margin-left: 100px;
+	line-height: 1.8;
+}
+.status ul li{
+	display: inline-block;
+	margin-right: 10px;
+
+}
+.status ul li button{
+	margin-left: 10px;
+}
+.box{
+	margin-top: 10px;
+}
+.box .top .meds-time ,
+.box .top .meds-color{
+	margin-left: 10px;
+}
+.box .top .meds-time span,
+.box .top .meds-color span{
+	width:auto;
+}
+.box .top>ul li{
+	margin:5px 0;
+}
+.meds-control {
+	display: flex;
+	justify-content: center;
+	margin-top: 5px;
+}
+.meds-control button{
+	flex-basis: 200px;
+}
+.box .onePR{
+	height: 200px;
+	margin-top: 10px;
+	border:2px solid black;
+}
+.box h3{
+	text-align: center;
+	margin:.5rem;
+}
+.box .onePR >div{
+	position: relative;
+	height: 100%;
+	width: 33.2%;
+	float: left;
+	overflow: auto;
+
+}
+.box .onePR div+div{
+	border-left: 1px solid black;
+}
+.active{
+	background-color: green;
+}

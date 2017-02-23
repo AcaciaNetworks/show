@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>iChoice Med-Reminder</title>
+	<link rel="stylesheet" href="css/normalize.css">
+	<link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+	<header><h1>iChoice&amp;Cassia Med-Reminder</h1></header>
+	<section>
+		<div class="top">
+			<ul class="clearfix">
+				<li>
+					<label >
+						<span>HUB IP</span>
+						<input type="text" id="hubIp" value="192.168.199.239">
+						(Required)
+					</label>
+					
+				</li>
+				<!-- <li>
+					<label>
+						<span>device MAC</span>
+						<input type="text" id="deviceMac" value="08:7C:BE:00:00:01">
+					</label>
+				</li> -->
+				<li>
+					<button id="connect">Connect</button>
+					<!-- <span id="mesg">未连接</span>	 -->
+					<span id="battery"></span>	
+				</li>
+			</ul>
+		</div>
+		<div class="status clearfix" id="status">
+			<p >devices:</p>
+			<ul class="clearfix">
+			</ul>
+		</div>
+		<div class="box" id="meds-box">
+			<div class="top">
+				<ul class="clearfix">
+					<li>
+						<label>
+							<span>Medicine</span>
+							<input type="text" id="medicine" placeholder="less than 8 characters">
+							<button data-type='0'>+</button>
+						</label>
+						<label class="meds-time">
+							<span>Remand time </span>
+							<input type="datetime-local" id="medTime">
+							<button data-type='1'>+</button>
+						</label>
+						<label class="meds-color">
+							<span>Color</span>
+							<select id="color">
+								<option value="1" selected>Red</option>
+								<option value="2">Green</option>
+								<option value="3">Blue</option>
+								<option value="4">Yellow</option>
+								<option value="5">Purple</option>
+							</select>
+						</label>
+					</li>
+					
+				</ul>
+				<div class="meds-control">
+					<button id="send">Send recipe</button>
+					<!-- <button id="clearMed">清除药方</button> -->
+					<!-- <button id="clearMes">清除服药信息</button> -->
+				</div>
+			</div>
+			<ul class="allPR">
+				<!-- <li>
+					<p><b>PR1</b></p>
+					<div class="onePR">
+						<div class="left">
+							<h3 class="">已存储药方</h3>
+							<button id="readMed" class="b-position">清除药方</button>
+							<p></p>
+						</div>
+						<div class="center">
+							<h3>服药历史</h3>
+							<p></p>
+						</div>
+						<div class="right">
+							<h3>服药状态</h3>
+							<ul></ul>
+						</div>
+					</div>
+				</li> -->
+				
+			</ul>
+		</div>
+	</section>
+</body>
+<script src='js/api.js'></script>
+<script src='js/jquery.min.js'></script>
+<script src='js/index.js'></script>
+</html>
