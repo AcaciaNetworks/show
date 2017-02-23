@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>ichoice</title>
+    <title i18n="title">ichoice</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
     <script src="./jquery.js"></script>
@@ -36,7 +36,9 @@
             margin: 0;
             text-align: left
         }
-        
+        .m h1{
+            /*float:left;*/
+        }
         .sub {
             width: 31.333%;
             height: 27%;
@@ -104,6 +106,14 @@
         footer img {
             vertical-align: top;
         }
+        select{
+            float: right;
+            margin: 1.4rem;
+            margin-bottom: 0;
+            padding:.2rem;
+            font-size: 1rem;
+            line-height: 1rem;
+        }
     </style>
 </head>
 
@@ -115,30 +125,35 @@
         hub is offline, please make hub online and try again
     </div>
     <div id="area" class="m clear">
-        <div class="" style="width: 100%; height: 10%"><h1>iChoice Healthcare Solution</h1></div>
+        <div class="" style="height: 20%;max-height: 70px"><h1 style="display: inline-block;" i18n="title">iChoice Healthcare Solution</h1>
+        <select >
+            <option value="en">English</option>
+            <option value="cn">中文</option>
+        </select>
+        </div>
         <div class="sub" style="background: #FF7373; width: 64.6666666%;">
-            <h2>BPM</h2>
+            <h2 i18n="bpm">BPM</h2>
 
             <div class="xueya">
             </div>
         </div>
         <div class="sub" style="background: #B1C7AB">
-            <h2>Scale</h2>
+            <h2 i18n="scale">Scale</h2>
 
             <div class="weight"></div>
         </div>
         <div class="sub" style="background: #13C2D6">
-            <h2>Pulse Oximeter</h2>
+            <h2 i18n="pulseOx">Pulse Oximeter</h2>
 
             <div class="xueyang"></div>
         </div>
         <div class="sub" style="background: #A72058">
-            <h2>Tracker</h2>
+            <h2 i18n="tracker">Tracker</h2>
 
             <div class="shouhuan"></div>
         </div>
         <div class="sub" style="background: #8AD290">
-            <h2>ECG</h2>
+            <h2 i18n="ecg">ECG</h2>
 
             <div class="ecg">
             </div>
@@ -146,20 +161,19 @@
             <!--<img src="http://115.29.164.236:8071/doctorUI/ECGimg/118s1v1.png" style="height: 80%">-->
         </div>
         <div class="sub" style="background: #1372D6">
-            <h2>Thermometer</h2>
+            <h2 i18n="thermometer">Thermometer</h2>
 
             <div class="temp">
 
             </div>
         </div>
         <div class="sub">
-            <h2><a href="./ichoiceMeds/index.html" target="_blank" style="text-decoration: none;">Med-Reminder</a></h2>
+            <h2><a i18n="medReminder" href="./ichoiceMeds/index.html" target="_blank" style="text-decoration: none;">Med-Reminder</a></h2>
         </div>
 
         <div class="sub">
-            <h2>About</h2>
-            <p>Powered by &copy; <a href="http://www.cassianetworks.com">CassiaNetworks</a></p>
-            <p><img id="qr" src="" /></p>
+            <p style="margin: 0">Powered by &copy; <a href="http://www.cassianetworks.com">CassiaNetworks</a></p>
+            <p style="margin: 0"><img id="qr" src="" style="max-height: 120px" /></p>
         </div>
 <!--     <div class="sub">
             
@@ -255,7 +269,12 @@
             location.reload()
         })
     }
+    $('select').on('change', function(event) {
+        i18n.render(this.value)
+        /* Act on the event */
+    });
 </script>
+<script src="./ichoiceMeds/i18n.js"></script>
 </body>
 
 </html>
