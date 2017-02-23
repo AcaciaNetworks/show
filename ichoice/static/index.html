@@ -2,165 +2,175 @@
 <html lang="en">
 
 <head>
-	<title>ichoice</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
-	<script src="./jquery.js"></script>
-	<style type="text/css">
-		html,
-		body {
-			margin: 0;
-			padding: 0;
-		}
-		
-		a,
-		a:hover,
-		a:visited {
-			color: #39f;
-		}
-		
-		.m {
-			width: 100%;
-			position: absolute;
-			top: 0;
-			left: 0;
-			right: 0;
-			bottom: 0;
-		}
-		
-		.m h2 {
-			margin: 0;
-			text-align: center
-		}
-		
-		.sub {
-			width: 33.333%;
-			height: 33.333%;
-			overflow: auto;
-			box-shadow: inset -1px -1px 2px #ccc;
-			display: block;
-			float: left
-		}
-		
-		.clear:after {
-			content: ' ';
-			clear: both;
-			display: block;
-			height: 0;
-			visibility: hidden;
-			font-size: 0;
-			line-height: 0;
-		}
-		/*.device.disconnected {*/
-		/*background: gray;*/
-		/*}*/
-		
-		.device {
-			background: none;
-			-webkit-transition: all 1000ms ease-in-out;
-			-moz-transition: all 1000ms ease-in-out;
-			-ms-transition: all 1000ms ease-in-out;
-			-o-transition: all 1000ms ease-in-out;
-			transition: all 1000ms ease-in-out;
-			font-size: 1.5em;
-		}
-		
-		.device.connected {
-			box-sizing: border-box;
-			background: #C4E3C4;
-		}
-		
-		.warn {
-			height: 30px;
-			margin: auto;
-			text-align: center;
-			color: red;
-			font-size: 1em;
-		}
-		
-		#member {
-			text-align: center;
-			border-bottom: 1px solid #ccc;
-		}
-		
-		footer div {
-			text-align: center;
-			width: 50%;
-			height: 100%;
-			float: left;
-		}
-		
-		footer img {
-			vertical-align: top;
-		}
-	</style>
+    <title>ichoice</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <script src="./jquery.js"></script>
+    <style type="text/css">
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        
+        a,
+        a:hover,
+        a:visited {
+            color: #cef;
+        }
+
+        h1{ margin: 0; padding: .7em; color: #fff }
+        
+        .m {
+            width: 100%;
+            background: #20a url(http://il1.picdn.net/shutterstock/videos/1263502/thumb/5.jpg) no-repeat;
+            background-size: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+        
+        .m h2 {
+            margin: 0;
+            text-align: left
+        }
+        
+        .sub {
+            width: 31.333%;
+            height: 27%;
+            padding: 1%;
+            margin: .5% 1%;
+            /* border-radius: 2em; */
+            box-sizing: border-box;
+            overflow: auto;
+            background-color: #999;
+            display: block;
+            float: left;
+            color: #fff;
+            opacity: .93;
+            box-shadow: 0 1em 5em rgba(0,0,0,.2);
+        }
+        
+        .clear:after {
+            content: ' ';
+            clear: both;
+            display: block;
+            height: 0;
+            visibility: hidden;
+            font-size: 0;
+            line-height: 0;
+        }
+        /*.device.disconnected {*/
+        /*background: gray;*/
+        /*}*/
+        
+        .device {
+            background: none;
+            -webkit-transition: all 1000ms ease-in-out;
+            -moz-transition: all 1000ms ease-in-out;
+            -ms-transition: all 1000ms ease-in-out;
+            -o-transition: all 1000ms ease-in-out;
+            transition: all 1000ms ease-in-out;
+            font-size: 1.5em;
+        }
+        
+        .device.connected {
+            box-sizing: border-box;
+            background: #C4E3C4;
+        }
+        
+        .warn {
+            height: 30px;
+            margin: auto;
+            text-align: center;
+            color: red;
+            font-size: 1em;
+        }
+        
+        #member {
+            text-align: center;
+            border-bottom: 1px solid #ccc;
+        }
+        
+        footer div {
+            text-align: center;
+            width: 50%;
+            height: 100%;
+            float: left;
+        }
+        
+        footer img {
+            vertical-align: top;
+        }
+    </style>
 </head>
 
 <body>
-	<header>
-		<div id="member"></div>
-	</header>
-	<div style="display: none" class="warn">
-		hub is offline, please make hub online and try again
-	</div>
-	<div id="area" class="m clear">
-		<div class="sub">
-			<h2>BPM</h2>
+    <header>
+        <div id="member"></div>
+    </header>
+    <div style="display: none" class="warn">
+        hub is offline, please make hub online and try again
+    </div>
+    <div id="area" class="m clear">
+        <div class="" style="width: 100%; height: 10%"><h1>iChoice Healthcare Solution</h1></div>
+        <div class="sub" style="background: #FF7373; width: 64.6666666%;">
+            <h2>BPM</h2>
 
-			<div class="xueya">
-			</div>
-		</div>
-		<div class="sub">
-			<h2>Scale</h2>
+            <div class="xueya">
+            </div>
+        </div>
+        <div class="sub" style="background: #B1C7AB">
+            <h2>Scale</h2>
 
-			<div class="weight"></div>
-		</div>
-		<div class="sub">
-			<h2>Pulse Oximeter</h2>
+            <div class="weight"></div>
+        </div>
+        <div class="sub" style="background: #13C2D6">
+            <h2>Pulse Oximeter</h2>
 
-			<div class="xueyang"></div>
-		</div>
-		<div class="sub">
-			<h2>Tracker</h2>
+            <div class="xueyang"></div>
+        </div>
+        <div class="sub" style="background: #A72058">
+            <h2>Tracker</h2>
 
-			<div class="shouhuan"></div>
-		</div>
-		<div class="sub">
-			<h2>ECG</h2>
+            <div class="shouhuan"></div>
+        </div>
+        <div class="sub" style="background: #8AD290">
+            <h2>ECG</h2>
 
-			<div class="ecg">
-			</div>
-			<!--<a target="_blank" href="http://115.29.164.236:8071/DoctorUI/Diagnosis/WebFrameset.aspx?code=004900480055#Menu=ChildMenu1">view</a>-->
-			<!--<img src="http://115.29.164.236:8071/doctorUI/ECGimg/118s1v1.png" style="height: 80%">-->
-		</div>
-		<div class="sub">
-			<h2>Thermometer</h2>
+            <div class="ecg">
+            </div>
+            <!--<a target="_blank" href="http://115.29.164.236:8071/DoctorUI/Diagnosis/WebFrameset.aspx?code=004900480055#Menu=ChildMenu1">view</a>-->
+            <!--<img src="http://115.29.164.236:8071/doctorUI/ECGimg/118s1v1.png" style="height: 80%">-->
+        </div>
+        <div class="sub" style="background: #1372D6">
+            <h2>Thermometer</h2>
 
-			<div class="temp">
+            <div class="temp">
 
-			</div>
-		</div>
-		<div class="sub">
-			<h2>Others</h2>
-			<div class="others">
-
-			</div>
-		</div>
-		<div class="sub">
-			<h2>About</h2>
-			Product 2016 &copy; <a href="http://choicemmed.com/">ChoiceMMed</a> <br> Developer 2016 &copy; <a href="http://www.cassianetworks.com">CassiaNetworks</a>
-		</div>
-		<div class="sub">
-			<img id="qr" src="" />
-		</div>
-	</div>
-	<script>
+            </div>
+        </div>
+        <div class="sub">
+            <h2>Others</h2>
+        </div>
+        <div class="sub">
+            <h2>About</h2>
+            <p>Powered by &copy; <a href="http://www.cassianetworks.com">CassiaNetworks</a></p>
+            <p><img id="qr" src="" /></p>
+        </div>
+<!--     <div class="sub">
+            
+        </div> -->
+    </div>
+    <script>
     $('#qr').attr('src','http://qr.liantu.com/api.php?w=200&text=' + location.href)
     var search = parseSearch();
     var hubMac = search.mac || '';
     hubMac = hubMac.toUpperCase()
     document.title += '-' + hubMac;
-    $.get('token?mac=' + hubMac)
+    $.get('token?mac=' + hubMac + '&callback=' + search.callback|| '')
             .then(function (ret) {
                 if (ret.match('offline')) {
                     hubOffline();
@@ -175,13 +185,13 @@
                 }, 1000);
             });
     var deviceTpl = '\
-		<div class="device connected">\
-			<div class="icon"></div>\
-			<div class="type"></div>\
-			<div class="mac"></div>\
-			<div class="value"></div>\
-		</div>\
-	';
+        <div class="device connected">\
+            <div class="icon"></div>\
+            <div class="type"></div>\
+            <div class="mac"></div>\
+            <div class="value"></div>\
+        </div>\
+    ';
     function display(data) {
         var deviceType = data.device;
         var typeArea = $('.' + deviceType);
@@ -190,18 +200,14 @@
         if (!device.length) {
             device = $(deviceTpl);
             device.attr('id', id);
-			if (typeArea.length) {
-            	typeArea.append(device);				
-			} else {
-				$('.others').append(device)
-			}
+            typeArea.append(device);
         }
         device.find('.mac').text(data.mac);
         device.find('.value').text(data.value)
     }
 
     function run() {
-        var es = new EventSource('/event?mac=' + hubMac + '&callback=' + search.callback|| '');
+        var es = new EventSource('/event?mac=' + hubMac);
         es.addEventListener('message', function (e) {
             console.log(e.data);
             var action = JSON.parse(e.data);
