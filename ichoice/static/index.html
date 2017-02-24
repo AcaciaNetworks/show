@@ -271,9 +271,9 @@
     function hubOffline() {
         $('.warn').show();
         $('#area').css('top', '30px')
-        $('body').click(function () {
-            location.reload()
-        })
+        // $('body').click(function () {
+        //     location.reload()
+        // })
     }
     $('select').on('change', function(event) {
         i18n.render(this.value)
