@@ -1,0 +1,1207 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"com",
+				"commond"
+			],
+			[
+				"se",
+				"select"
+			],
+			[
+				"med",
+				"medTime"
+			],
+			[
+				"sub",
+				"substr"
+			],
+			[
+				"comm",
+				"commond"
+			],
+			[
+				"clearMe",
+				"clearMes"
+			],
+			[
+				"co",
+				"connectFlag"
+			],
+			[
+				"send",
+				"sendMedicine"
+			],
+			[
+				"clear",
+				"clearInterval"
+			],
+			[
+				"get",
+				"getBattery"
+			],
+			[
+				"mes",
+				"message"
+			],
+			[
+				"rede",
+				"receiveDataSplit"
+			],
+			[
+				"CHE",
+				"checkSum"
+			],
+			[
+				"fl",
+				"connectFlag"
+			],
+			[
+				"hold",
+				"holdTime"
+			],
+			[
+				"wr",
+				"write"
+			],
+			[
+				"ho",
+				"holdTime"
+			],
+			[
+				"devic",
+				"deviceMac"
+			],
+			[
+				"con",
+				"connectFlag"
+			],
+			[
+				"url",
+				"urlName"
+			],
+			[
+				"devi",
+				"deviceMac"
+			],
+			[
+				"remo",
+				"removeClass\t.removeClass()"
+			],
+			[
+				"ca",
+				"class\tAttr"
+			],
+			[
+				"has",
+				"hasOwnProperty"
+			],
+			[
+				"inpu",
+				"inputData"
+			],
+			[
+				"mid",
+				"medicine\t(index.html)"
+			],
+			[
+				"dev",
+				"deviceMac"
+			],
+			[
+				"hub",
+				"hubIp"
+			],
+			[
+				"div",
+				"deviceMac"
+			],
+			[
+				"re",
+				"required\tAttr"
+			],
+			[
+				"list",
+				"list-style"
+			],
+			[
+				"texta",
+				"text-align"
+			],
+			[
+				"getCon",
+				"getConnectListAndFiil"
+			],
+			[
+				"conn",
+				"connectTip"
+			],
+			[
+				"sc",
+				"scanTip.js"
+			],
+			[
+				"select",
+				"select"
+			],
+			[
+				"brea",
+				"break-all"
+			],
+			[
+				"wor",
+				"word-break"
+			],
+			[
+				"des",
+				"descriptors\t(urlconfig.js)"
+			],
+			[
+				"res",
+				"resize\t.resize()"
+			],
+			[
+				"conso",
+				"console.log"
+			],
+			[
+				"writ",
+				"writeByHandle"
+			],
+			[
+				"we",
+				"writeByHandle\t(urlconfig.js)"
+			],
+			[
+				"meth",
+				"methodName"
+			],
+			[
+				"check",
+				"checked\t(index.js)"
+			],
+			[
+				"write",
+				"writeValue"
+			],
+			[
+				"cons",
+				"console.log\t(api.js)"
+			],
+			[
+				"inner",
+				"innerHTML\t(mainHandle.js)"
+			],
+			[
+				"dat",
+				"dataset\t(mainHandle.js)"
+			],
+			[
+				"ele",
+				"element"
+			],
+			[
+				"data",
+				"data-handle"
+			],
+			[
+				"typ",
+				"typeof"
+			],
+			[
+				"style",
+				"style=\"width"
+			],
+			[
+				"wit",
+				"with\t(getAllServicesAndFill.js)"
+			],
+			[
+				"layui-input",
+				"layui-input-inline\t(index.html)"
+			],
+			[
+				"inde",
+				"indexOf"
+			],
+			[
+				"paren",
+				"parent"
+			],
+			[
+				"index",
+				"indexOf\t(api.js)"
+			],
+			[
+				"msg",
+				"msgBox"
+			],
+			[
+				"scan",
+				"scanTip"
+			],
+			[
+				"sca",
+				"scanTips"
+			],
+			[
+				"html",
+				"htmlString"
+			],
+			[
+				"le",
+				"length"
+			],
+			[
+				"chil",
+				"children\t.children()"
+			],
+			[
+				"ser",
+				"services"
+			],
+			[
+				"child",
+				"children"
+			],
+			[
+				"value",
+				"valueHandle\t(untitled.js)"
+			],
+			[
+				"en",
+				"endHandle\t(untitled.js)"
+			],
+			[
+				"not",
+				"notify\t(showmethod.js)"
+			],
+			[
+				"par",
+				"parent1"
+			],
+			[
+				"pare",
+				"parent2\t(getConnectList.js)"
+			],
+			[
+				"notify",
+				"notifySSE"
+			],
+			[
+				"noti",
+				"notifyAndFill"
+			],
+			[
+				"JSON",
+				"JSON.stringify\t(api.js)"
+			],
+			[
+				"form",
+				"format"
+			],
+			[
+				"str",
+				"string\t(getConnectList.js)"
+			],
+			[
+				"proto",
+				"prototype"
+			],
+			[
+				"getAll",
+				"getAllServicesAndFill"
+			],
+			[
+				"fade",
+				"fadeOut\t.fadeOut()"
+			],
+			[
+				"htm",
+				"htmlTemp"
+			],
+			[
+				"show",
+				"showmethod.js"
+			],
+			[
+				"add",
+				"addEventListener\t(api.js)"
+			],
+			[
+				"innerH",
+				"innerHTML"
+			],
+			[
+				"sho",
+				"showLog"
+			],
+			[
+				"dis",
+				"disConnectDevice\t(mainHandle.js)"
+			],
+			[
+				"clic",
+				"click"
+			],
+			[
+				"paren2",
+				"parent2"
+			],
+			[
+				"conne",
+				"connectState"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "index.html",
+			"settings":
+			{
+				"buffer_size": 2007,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "ichoice meds.sublime-project",
+			"settings":
+			{
+				"buffer_size": 45,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "\nAA 55 09 D4 00 80 41 21 0F 91 01 18\n\n55 aa 19 d3 03 8f 01 91 69\n\n55aa19   d3 03 8f 01 91 69 ffffffffffffffffffffff\n\nAA5511D4008041 03 8F 91 69 FFFFFFFFFFFFFFFF2A\n\n2016.12.15  09:46\nAA 55 11 D4 00 80 41 03 8F AD C9 FFFFFFFFFFFFFFFFA6\n\n\n038f 01  adc9 ffffffffffffffffffff\n\n\n0  2  4  6  8  10 12 14  16\n01 10 0c 0f 16 0a 16 0a 02\n5  6  7  8  9  10 11 12 13\n\n\nAA 55 11 DB 00 20 09 41 41 FF FF FF FF FF FF FF FF FF FF FF 0",
+			"settings":
+			{
+				"buffer_size": 418,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "css/index.css",
+			"settings":
+			{
+				"buffer_size": 837,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 52.0,
+		"last_filter": "LiveReload: Enable/disable plugins",
+		"selected_items":
+		[
+			[
+				"LiveReload: Enable/disable plugins",
+				"LiveReload: Enable/disable plug-ins"
+			],
+			[
+				"sethm",
+				"Set Syntax: HTML"
+			],
+			[
+				"seht",
+				"Set Syntax: HTML"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ins",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 629.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/wang/my Projection/ichoice meds",
+		"/Users/wang/my Projection/ichoice meds/css",
+		"/Users/wang/my Projection/ichoice meds/js"
+	],
+	"file_history":
+	[
+		"/Users/wang/my Projection/ichoice meds/js/index.js",
+		"/Users/wang/Library/Application Support/Sublime Text 3/Packages/User/LiveReload.sublime-settings",
+		"/Users/wang/my Projection/ichoice meds/css/index.css",
+		"/Users/wang/my Projection/choice/index.js",
+		"/Users/wang/my Projection/mygit/cassia/cassia-hub-sdk/native hub control/src/lib/jquery.min.js",
+		"/Users/wang/my Projection/mygit/cassia/cassia-hub-sdk/native hub control/webpack.config.js",
+		"/Users/wang/my Projection/mygit/cassia/cassia-hub-sdk/native hub control/src/css/index.css",
+		"/Users/wang/my Projection/mygit/cassia/cassia-hub-sdk/native hub control/src/js/properties.js",
+		"/Users/wang/my Projection/mygit/cassia/cassia-hub-sdk/native hub control/package.json",
+		"/Users/wang/my Projection/mygit/cassia/cassia-hub-sdk/native hub control/src/js/tips.js",
+		"/Users/wang/my Projection/mygit/cassia/cassia-hub-sdk/native hub control/test1.js",
+		"/Users/wang/my Projection/mygit/cassia/cassia-hub-sdk/native hub control/jj.js",
+		"/Users/wang/my Projection/mygit/cassia/cassia-hub-sdk/native hub control/src/js/urlconfig.js",
+		"/Users/wang/Desktop/untitled.js",
+		"/Users/wang/my Projection/mygit/cassia/cassia-hub-sdk/native hub control/.gitignore",
+		"/Users/wang/my Projection/mygit/cassia/cassia-hub-sdk/native hub control/src/js/showlog.js",
+		"/Users/wang/my Projection/mygit/cassia/cassia-hub-sdk/native hub control/untitled.html",
+		"/Users/wang/my Projection/mygit/cassia/cassia-hub-sdk/native hub control/src/js/getAllServicesAndFill.js",
+		"/Users/wang/my Projection/mygit/cassia/cassia-hub-sdk/native hub control/src/js/getConnectState.js",
+		"/Users/wang/my Projection/mygit/cassia/cassia-hub-sdk/native hub control/src/js/mainHandle.js",
+		"/Users/wang/Library/Application Support/Sublime Text 3/Packages/User/bh_core.sublime-settings",
+		"/Users/wang/my Projection/mygit/cassia/cassia-hub-sdk/native hub control/src/js/scan.js",
+		"/Users/wang/my Projection/mygit/cassia/cassia-hub-sdk/native hub control/.eslintrc.json",
+		"/Users/wang/my Projection/mygit/cassia/cassia-hub-sdk/native hub control/src/js/connectDevice.js",
+		"/Users/wang/Library/Application Support/Sublime Text 3/Packages/User/SublimeLinter.sublime-settings",
+		"/Users/wang/my Projection/native hub control demo/src/assets/device lib/choiceP10-8.js",
+		"/Users/wang/my Projection/mygit/cassia/cassia-hub-sdk/native hub control/src/js/api.js",
+		"/Users/wang/my Projection/mygit/cassia/cassia-hub-sdk/native hub control/node_modules/.4.17.2@lodash/method.js",
+		"/Users/wang/Library/Application Support/Sublime Text 3/Packages/User/SideBarEnhancements/Open With/Side Bar.sublime-menu",
+		"/Users/god/Documents/native hub control demo/index.html"
+	],
+	"find":
+	{
+		"height": 39.0
+	},
+	"find_in_files":
+	{
+		"height": 105.0,
+		"where_history":
+		[
+			"/Users/wang/my Projection/mygit/cassia/cassia-hub-sdk/native hub control/src/js",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"debgger",
+			"transformToHex",
+			"data5",
+			"temp",
+			"commond",
+			"name",
+			"temp< ",
+			"toString(16)< ",
+			"toString(16) < ",
+			"'0x' +",
+			").",
+			"data",
+			"case:",
+			"hasOwnProperty",
+			"commond",
+			"transformToHex",
+			"temp",
+			"connect",
+			"Connect",
+			"connect",
+			"openHubNotify",
+			"holdConnect",
+			"globalData.err",
+			"verifyInputData",
+			"checkConnect",
+			"mes",
+			"connectFlag",
+			"holdConnect",
+			"golbalData",
+			"/",
+			"hubIp",
+			"perMac",
+			"\"></",
+			"clear",
+			"deviceMac",
+			"connect",
+			":",
+			"pbulic",
+			"textarea",
+			"$scanSwitch",
+			"addURLParam",
+			"class",
+			"SSE",
+			"innerHTML",
+			"val()",
+			".trim()",
+			"parop",
+			"checked",
+			"notify",
+			"ajaxResult",
+			"flag",
+			"writeByHnadle",
+			"value=",
+			"value",
+			"nodes",
+			"div",
+			"0x",
+			"0X",
+			"0x",
+			"x",
+			"X",
+			"x",
+			"X",
+			"getAllServices",
+			"services",
+			"data",
+			"id=\"",
+			"getConnectState",
+			"notifyAndFill",
+			"notifySSE",
+			"close",
+			"SSE",
+			"Number",
+			"notify",
+			"connectState",
+			"remove",
+			"$",
+			"switch",
+			"seitch",
+			"type",
+			"><",
+			"lay-filter=\"demo1\"",
+			"lay-submit=\"\"",
+			"getConnectList",
+			"connectDevice",
+			"connect",
+			"connectList",
+			"data",
+			"connectButton"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2007,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								102,
+								102
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										110,
+										111
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/double_quote.png",
+										"brackethighlighter.quote"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										99,
+										100
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content"
+							],
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "ichoice meds.sublime-project",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 45,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										43,
+										44
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/curly_bracket.png",
+										"brackethighlighter.curly"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										0,
+										1
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content"
+							],
+							"syntax": "Packages/JavaScript/JSON.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 418,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								370,
+								373
+							]
+						],
+						"settings":
+						{
+							"auto_name": "",
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content"
+							],
+							"default_dir": "/Users/wang/my Projection/ichoice meds",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 3,
+					"file": "css/index.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 837,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								176,
+								176
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										176,
+										177
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/curly_bracket.png",
+										"brackethighlighter.curly"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										141,
+										142
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content"
+							],
+							"syntax": "Packages/CSS/CSS.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 31.0
+	},
+	"input":
+	{
+		"height": 39.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			0.580815036462,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "ichoice meds.sublime-project",
+	"replace":
+	{
+		"height": 58.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"main",
+				"src/js/mainHandle.js"
+			],
+			[
+				"ind",
+				"index.js"
+			],
+			[
+				"indecss",
+				"src/css/index.css"
+			],
+			[
+				"index",
+				"index.js"
+			],
+			[
+				"index.css",
+				"src/css/index.css"
+			],
+			[
+				"showlog",
+				"src/js/showlog.js"
+			],
+			[
+				"scan",
+				"src/js/scan.js"
+			],
+			[
+				"getconnectstate",
+				"src/js/getConnectState.js"
+			],
+			[
+				"api",
+				"src/js/api.js"
+			],
+			[
+				"url",
+				"src/js/urlconfig.js"
+			],
+			[
+				"",
+				"native hub control demo/src/assets/device lib/choiceP10-8.js"
+			],
+			[
+				"indexcss",
+				"native hub control/src/css/index.css"
+			],
+			[
+				"meth",
+				"native hub control/node_modules/.4.17.2@lodash/method.js"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 1,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 249.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

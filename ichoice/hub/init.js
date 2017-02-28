@@ -17,10 +17,10 @@ let EventSource = require('eventsource');
 let devices = [];
 devices.push(require('../devices/xtxy'))
 devices.push(require('../devices/shouhuan'))
-//devices.push(require('../devices/weight'))
-//devices.push(require('../devices/bbt'))
-//devices.push(require('../devices/bp'))
-//devices.push(require('../devices/ecg'))
+devices.push(require('../devices/weight'))
+devices.push(require('../devices/bbt'))
+devices.push(require('../devices/bp'))
+devices.push(require('../devices/ecg'))
 
  //devices.push(require('../devices/xindian'));
  devices.push(require('../devices/xueya'));
@@ -53,7 +53,7 @@ process.on('message', arg => {
 //get token
 function auth() {
     auth.t && clearTimeout(auth.t);
-    auth.t = setTimeout(auth, 100 * 60 * 1000);
+    auth.t = setTimeout(auth, 50 * 60 * 1000);
     headers.Authorization = 'Basic ' + new Buffer(userId + ':' + secret, 'ascii').toString('base64');
     global.req = request.defaults({
         baseUrl: cloudAddress,
@@ -149,6 +149,7 @@ auth()
 
 function offlineHandler() {
     process.send({
-        type: 'offline'
+        type: 'offline',
+        mac: hubMac
     })
 }

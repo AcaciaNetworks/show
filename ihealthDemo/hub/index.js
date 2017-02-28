@@ -1,12 +1,13 @@
 /**
  * Created by zhaosc on 9/20/16.
  */
-let process = require('child_process');
+let cProcess = require('child_process');
 let EventSource = require('eventsource');
 let req = require('request');
 
 let toWatch = {};
 let cloudAddress = 'http://api.cassianetworks.com';
+// let cloudAddress = 'http://127.0.0.1:3000';
 let userId = 'ihealthlabs';
 let secret = '8d8b93bb2d0ff8d9';
 //get token
@@ -87,12 +88,13 @@ exports.stop = function stop(mac, isForce) {
         delete hubs[mac];
         theHub = null
         resArr.forEach(function (res) {
+            if (res.mac != mac) return
             res.push({
                 type: 'offline'
             });
             res.end();
+            rmRes(res)
         })
-        resArr = []
         return
     }
     console.log('hub count', theHub.count);
@@ -104,17 +106,25 @@ exports.stop = function stop(mac, isForce) {
         delete hubs[mac];
         theHub = null
         resArr.forEach(function (res) {
+            if (res.mac != mac) return
             res.push({
                 type: 'offline'
             });
             res.end();
+            rmRes(res)
         })
-        resArr = []
     }
 };
 
 let resArr = []
+function rmRes(r) {
+    let i = resArr.indexOf(r)
+    if (i > -1) {
+        resArr.splice(i, 1)
+    }
+}
 exports.addEvent = function addEvent(mac, res) {
+    res.mac = mac
     resArr.push(res)
     let theHub = hubs[mac];
     if (!theHub) {
@@ -122,7 +132,7 @@ exports.addEvent = function addEvent(mac, res) {
     }
 
     theHub.on('message', arg => {
-        if (arg.type == 'offline') {
+        if (arg.type == 'offline' && arg.mac == mac) {
             res.push({
                 type: 'offline'
             });
@@ -139,7 +149,8 @@ exports.addEvent = function addEvent(mac, res) {
 
 function initialProcess(mac) {
     let theHub;
-    theHub = hubs[mac] = process.fork(__dirname + '/init.js', [mac, userId, secret, cloudAddress]);
+    theHub = hubs[mac] = cProcess.fork(__dirname + '/init.js', [mac, userId, secret, cloudAddress]);
+    theHub.mac = mac
     theHub.count = 1;
 
     theHub.on('message', arg => {
@@ -147,5 +158,13 @@ function initialProcess(mac) {
             exports.stop(mac);
         }
     });
+    theHub.on('exit', function (code, signal) {
+        console.log('exit', code, signal, theHub.mac)
+        if (theHub) {
+            console.log(theHub.mac)
+            delete hubs[theHub.mac]
+            theHub = null
+        }
+    })
     return theHub
 }

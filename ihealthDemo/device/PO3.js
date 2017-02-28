@@ -19,7 +19,7 @@ function getWriteHandler(deviceMac) {
     //get characteristics
     req.get(`/gatt/nodes/${deviceMac}/characteristics?uuid=${characterUUID}`, function (err, res, body) {
         getting = false;
-        console.log(hubMac, deviceMac, 'characteristics', body, res.statusCode);
+        console.log(hubMac, deviceMac, 'characteristics', body, res && res.statusCode);
         //if (res.statusCode != 200) return getWriteHandler(deviceMac);
         writeHandler = body.characteristics[0].handle;
     });
@@ -38,7 +38,7 @@ exports.onScan = function PO3OnScan(data) {
                 getWriteHandler(deviceMac);
             }).catch(function (e) {
                 if (e == 'busy') return;
-                console.error('connect error')
+                console.error('connect error', e)
             });
     }
 };

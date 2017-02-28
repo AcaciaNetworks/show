@@ -1,13 +1,13 @@
 /**
  * Created by zhaosc on 9/20/16.
  */
-let process = require('child_process');
+let cProcess = require('child_process');
 let EventSource = require('eventsource');
 let req = require('request');
 
 let toWatch = {};
-
 let cloudAddress = 'http://api.cassianetworks.com';
+// let cloudAddress = 'http://127.0.0.1:3000';
 let userId = 'ihealthlabs';
 let secret = '8d8b93bb2d0ff8d9';
 //get token
@@ -26,7 +26,6 @@ function auth() {
         })
     })
 }
-//
 
 auth()
     .then(token => {
@@ -36,12 +35,17 @@ auth()
             let status = JSON.parse(e.data);
             console.log('hub status change', status);
             if (toWatch[status.mac] && status.status !== 'online') {
-                exports.stop(status.mac, true);
+                exports.stop(status.mac, true)
+            } else {
+                exports.stop(status.mac, true)
+                exports.start(status.mac)
             }
         };
 
         watch.onerror = function (e) {
-            console.error('watch', e)
+            console.error('watch', e, 'api down')
+            //restart
+            process.exit()
         };
     });
 
@@ -83,12 +87,13 @@ exports.stop = function stop(mac, isForce) {
         delete hubs[mac];
         theHub = null
         resArr.forEach(function (res) {
+            if (res.mac != mac) return
             res.push({
                 type: 'offline'
             });
             res.end();
+            rmRes(res)
         })
-        resArr = []
         return
     }
     console.log('hub count', theHub.count);
@@ -100,25 +105,33 @@ exports.stop = function stop(mac, isForce) {
         delete hubs[mac];
         theHub = null
         resArr.forEach(function (res) {
+            if (res.mac != mac) return
             res.push({
                 type: 'offline'
             });
             res.end();
+            rmRes(res)
         })
-        resArr = []
     }
 };
 
 let resArr = []
-exports.addEvent = function addEvent(mac, res) {
+function rmRes(r) {
+    let i = resArr.indexOf(r)
+    if (i > -1) {
+        resArr.splice(i, 1)
+    }
+}
+exports.addEvent = function addEvent(mac, res, callback) {
+    res.mac = mac
     resArr.push(res)
     let theHub = hubs[mac];
     if (!theHub) {
         theHub = initialProcess(mac);
     }
-
+    console.log(mac, callback, 'eventsource')
     theHub.on('message', arg => {
-        if (arg.type == 'offline') {
+        if (arg.type == 'offline' && arg.mac == mac) {
             res.push({
                 type: 'offline'
             });
@@ -130,12 +143,24 @@ exports.addEvent = function addEvent(mac, res) {
             type: 'data',
             data: arg.data
         });
+        if (callback && arg.postData) {
+            arg.postData.forEach(function (d) {
+                req({
+                    json: true,
+                    method: 'POST',
+                    form: d,
+                    url: callback
+                }, function (err, res, body) {
+                    console.log('post to ', callback, err, body, res && res.statusCode);
+                });
+            })
+        }
     })
 };
 
 function initialProcess(mac) {
     let theHub;
-    theHub = hubs[mac] = process.fork(__dirname + '/init.js', [mac, userId, secret, cloudAddress]);
+    theHub = hubs[mac] = cProcess.fork(__dirname + '/init.js', [mac, userId, secret, cloudAddress]);
     theHub.mac = mac
     theHub.count = 1;
 
