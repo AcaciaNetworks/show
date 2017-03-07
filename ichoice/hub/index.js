@@ -158,6 +158,10 @@ exports.addEvent = function addEvent(mac, res, callback) {
     })
 };
 
+exports.discon = function discon(hubMac){
+    
+}
+
 function initialProcess(mac) {
     let theHub;
     theHub = hubs[mac] = cProcess.fork(__dirname + '/init.js', [mac, userId, secret, cloudAddress]);

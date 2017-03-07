@@ -13,7 +13,8 @@
             'tracker': '手环',
             'ecg': '心电图',
             'thermometer': ' 体温表',
-            'medReminder': '吃药提醒'
+            'medReminder': '吃药提醒',
+            'reset':'复位'
         },
         en = {
             '_lang':'en',
@@ -25,7 +26,8 @@
             'tracker': 'Tracker',
             'ecg': 'ECG',
             'thermometer': ' Thermometer',
-            'medReminder': 'Med-Reminder'
+            'medReminder': 'Med-Reminder',
+            'reset':'reset'
         },
         lang = {},
         i18n = function(k) {

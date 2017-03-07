@@ -141,6 +141,24 @@ exports.getTime = function () {
     return timeStr
 };
 
+exports.discon = function(deviceMac){
+    return new Promise(function(resovle,reject){
+        req.del(`gap/nodes/${deviceMac}/connection/`,function(err,status,body){
+            if(err) reject(err);
+            resolve(body)
+        })
+    })
+}
+
+exports.getList = function(){
+    return new Promise(function(resolve,reject){
+        req.get(`gap/nodes/?connection_state=connected`,function(err,status,body){
+            if(err) reject(err);
+            resolve(body)
+            console.log(body)
+        })
+    })
+}
 //console.log(exports.hexToString('4b4e2d35353042542031313037300000'));
 //console.log(exports.toUUID('sed.jiuan.BPAV10'))
 //console.log(exports.toUUID('rec.jiuan.BPAV10', true))
