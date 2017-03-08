@@ -76,6 +76,10 @@ function auth() {
             if (err) return reject(err);
             //console.log('token:', body.access_token);
             headers.Authorization = 'Bearer ' + body.access_token;
+            process.send({
+                type:'getToken',
+                req
+            })
             resolve(req)
         })
     })

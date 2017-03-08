@@ -65,13 +65,18 @@ exports.start = function start(mac) {
             type: 'token'
         });
         theHub.on('message', function tokenHandler(arg) {
-            if (arg.type != 'tokenHandler') return;
-            theHub.removeListener('message', tokenHandler);
-            if (arg.ok) {
-                resolve()
-            } else {
-                exports.stop(mac);
-                reject()
+            if (arg.type === 'tokenHandler'){
+                theHub.removeListener('message', tokenHandler);
+                if (arg.ok) {
+                    resolve()
+                } else {
+                    exports.stop(mac);
+                    reject()
+                }
+            }else if(arg.type === 'getToken'){
+                console.log('@@@@@getToken')
+                conso
+                global.reqs = arg.req
             }
         });
     })

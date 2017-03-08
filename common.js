@@ -143,7 +143,7 @@ exports.getTime = function () {
 
 exports.discon = function(deviceMac){
     return new Promise(function(resovle,reject){
-        req.del(`gap/nodes/${deviceMac}/connection/`,function(err,status,body){
+        reqs.del(`gap/nodes/${deviceMac}/connection/`,function(err,status,body){
             if(err) reject(err);
             resolve(body)
         })
@@ -152,7 +152,8 @@ exports.discon = function(deviceMac){
 
 exports.getList = function(){
     return new Promise(function(resolve,reject){
-        req.get(`gap/nodes/?connection_state=connected`,function(err,status,body){
+        console.log(reqs)
+        reqs.get(`gap/nodes/?connection_state=connected`,function(err,status,body){
             if(err) reject(err);
             resolve(body)
             console.log(body)
