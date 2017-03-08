@@ -64,6 +64,19 @@ exports.start = function start(mac) {
         theHub.send({
             type: 'token'
         });
+        theHub.on('message',function(arg){
+            if(arg.type==='getToken')
+            {
+                global.reqs = req.defaults({
+                    baseUrl:cloudAddress,
+                    json:true,
+                    qs:{
+                        mac:arg.hubMac
+                    },
+                    headers:arg.Authorization
+                })
+            }
+        })
         theHub.on('message', function tokenHandler(arg) {
             if (arg.type === 'tokenHandler'){
                 theHub.removeListener('message', tokenHandler);
@@ -73,10 +86,6 @@ exports.start = function start(mac) {
                     exports.stop(mac);
                     reject()
                 }
-            }else if(arg.type === 'getToken'){
-                console.log('@@@@@getToken')
-                conso
-                global.reqs = arg.req
             }
         });
     })

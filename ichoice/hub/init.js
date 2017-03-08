@@ -78,7 +78,8 @@ function auth() {
             headers.Authorization = 'Bearer ' + body.access_token;
             process.send({
                 type:'getToken',
-                req
+                hubMac,
+                Authorization:headers.Authorization
             })
             resolve(req)
         })

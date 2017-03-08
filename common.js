@@ -152,7 +152,6 @@ exports.discon = function(deviceMac){
 
 exports.getList = function(){
     return new Promise(function(resolve,reject){
-        console.log(reqs)
         reqs.get(`gap/nodes/?connection_state=connected`,function(err,status,body){
             if(err) reject(err);
             resolve(body)
