@@ -64,14 +64,30 @@ exports.start = function start(mac) {
         theHub.send({
             type: 'token'
         });
+        theHub.on('message',function(arg){
+            if(arg.type==='getToken')
+            {
+                global.reqs = req.defaults({
+                    baseUrl:cloudAddress,
+                    json:true,
+                    qs:{
+                        mac:arg.hubMac
+                    },
+                    headers:{
+                        Authorization:arg.Authorization
+                    }
+                })
+            }
+        })
         theHub.on('message', function tokenHandler(arg) {
-            if (arg.type != 'tokenHandler') return;
-            theHub.removeListener('message', tokenHandler);
-            if (arg.ok) {
-                resolve()
-            } else {
-                exports.stop(mac);
-                reject()
+            if (arg.type === 'tokenHandler'){
+                theHub.removeListener('message', tokenHandler);
+                if (arg.ok) {
+                    resolve()
+                } else {
+                    exports.stop(mac);
+                    reject()
+                }
             }
         });
     })
@@ -157,6 +173,10 @@ exports.addEvent = function addEvent(mac, res, callback) {
         }
     })
 };
+
+exports.discon = function discon(hubMac){
+    
+}
 
 function initialProcess(mac) {
     let theHub;

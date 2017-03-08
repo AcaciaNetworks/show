@@ -27,6 +27,11 @@ devices.push(require('../devices/ecg'))
  devices.push(require('../devices/xuetang'));
  devices.push(require('../devices/kouwen'));
 
+//add by WangRan
+ devices.push(require('../devices/A6-56FF'));
+ devices.push(require('../devices/HR'));
+
+
 //handler message from parent
 process.on('message', arg => {
     //refresh token and check is hub online
@@ -71,6 +76,11 @@ function auth() {
             if (err) return reject(err);
             //console.log('token:', body.access_token);
             headers.Authorization = 'Bearer ' + body.access_token;
+            process.send({
+                type:'getToken',
+                hubMac,
+                Authorization:headers.Authorization
+            })
             resolve(req)
         })
     })

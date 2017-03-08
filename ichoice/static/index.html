@@ -75,12 +75,13 @@
             -ms-transition: all 1000ms ease-in-out;
             -o-transition: all 1000ms ease-in-out;
             transition: all 1000ms ease-in-out;
-            font-size: 1.5em;
+            font-size: 1em;
         }
         
         .device.connected {
             box-sizing: border-box;
             background: #C4E3C4;
+            margin-bottom: 10px;
         }
         
         .warn {
@@ -114,6 +115,14 @@
             font-size: 1rem;
             line-height: 1rem;
         }
+        .reset{
+            float: right;
+            margin: 1.4rem;
+            margin-bottom: 0;
+            padding:.2rem;
+            font-size: 1rem;
+            line-height: 1rem;
+        }
     </style>
 </head>
 
@@ -125,15 +134,16 @@
         hub is offline, please make hub online and try again
     </div>
     <div id="area" class="m clear">
-        <div class="" style="height: 20%;max-height: 70px"><h1 style="display: inline-block;" i18n="title">iChoice Healthcare Solution</h1>
-        <select >
-            <option value="en">English</option>
-            <option value="cn">中文</option>
-        </select>
+        <div class="" style="height: 20%;max-height: 70px">
+            <h1 style="display: inline-block;" i18n="title">iChoice Healthcare Solution</h1>
+            <select>
+                <option value="en">English</option>
+                <option value="cn">中文</option>
+            </select>
+            <button class="reset" id="reset" i18n='reset'>复位</button>
         </div>
         <div class="sub" style="background: #FF7373;">
             <h2 i18n="bpm">BPM</h2>
-
             <div class="xueya">
             </div>
         </div>
@@ -279,6 +289,12 @@
         i18n.render(this.value)
         /* Act on the event */
     });
+    $('#reset').on('click',function(){
+        $.get('discon?mac=',function(data){
+            alert('reset:'+data)
+            location.reload()
+        })
+    })
 </script>
 <script src="./ichoiceMeds/i18n.js"></script>
 </body>
