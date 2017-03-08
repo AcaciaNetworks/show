@@ -290,7 +290,10 @@
         /* Act on the event */
     });
     $('#reset').on('click',function(){
-        $.get('discon?mac=')
+        $.get('discon?mac=',function(data){
+            alert('reset:'+data)
+            location.reload()
+        })
     })
 </script>
 <script src="./ichoiceMeds/i18n.js"></script>

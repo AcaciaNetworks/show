@@ -45,13 +45,12 @@ app.get('/discon', function(req, res) {
     var hubMac = req.query.mac || defaultHub;
     common.getList().then(function(body) {
         console.log(body)
-        let data = JSON.parse(body),
-            promiseArr = []
-        data.nodes.forEach(item => {
+        let  promiseArr = []
+        body.nodes.forEach(item => {
             promiseArr.push(common.discon(item.id))
         })
         Promise.all(promiseArr).then(function(){
-            req.end('ok')
+            res.end('ok')
         })
     }).catch(function(err) {
         console.log(err)

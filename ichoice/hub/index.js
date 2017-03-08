@@ -73,7 +73,9 @@ exports.start = function start(mac) {
                     qs:{
                         mac:arg.hubMac
                     },
-                    headers:arg.Authorization
+                    headers:{
+                        Authorization:arg.Authorization
+                    }
                 })
             }
         })

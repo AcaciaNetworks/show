@@ -31,7 +31,7 @@ exports.onNotify = function (data) {
             type: 'event',
             data: {
                 device: 'shouhuan',
-                value: 'HR心率:' + heartRate,
+                value: 'HR bpm:' + heartRate,
                 mac: data.id
             },
             postData: [{

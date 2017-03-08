@@ -32,7 +32,7 @@ exports.onScan = function(data) {
             yield common.writeByHandle(deviceMac, '32', '2502242040ee')
             console.log('loop', new Date())
         })
-    }, 55 * 1000)
+    }, 10 * 1000)
 };
 
 exports.onNotify = function(data) {
@@ -45,7 +45,7 @@ exports.onNotify = function(data) {
             type: 'event',
             data: {
                 device: 'shouhuan',
-                value: 'A6心率:' + heartRate,
+                value: 'A6 bpm:' + heartRate,
                 mac: data.id
             },
             postData: [{
