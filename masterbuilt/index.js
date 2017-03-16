@@ -1,9 +1,6 @@
 var http = require("http");
-var EventSource = require('eventsource');
-var event = require("events");
 var emitter = new event();
 
-var bodyParser = require('body-parser');
 
 
 
@@ -20,9 +17,6 @@ app.use(function (req, res, next) {
     if (req.method == 'OPTIONS') return res.end();
     next();
 });
-app.use(bodyParser.json()); // for parsing application/json
-app.use(bodyParser.urlencoded({extended: true})); // for parsing application/x-www-form-urlencoded
-
 
 
 
