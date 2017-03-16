@@ -1,5 +1,4 @@
 var http = require("http");
-var emitter = new event();
 
 
 
