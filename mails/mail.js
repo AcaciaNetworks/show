@@ -5,7 +5,7 @@ var co = require('co');
 var url = [];
  
 var myreg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
-fs.readFile('D:/test/companyUrl.csv','utf-8',function(err,data){  
+fs.readFile('./companyUrl.csv','utf-8',function(err,data){  
     if(err){  
         console.log(data);  
     }else{  
@@ -47,7 +47,7 @@ function getcompanyData(i){
 			    		}
 					}); 
 					arr.push([mail]); 
-				    fs.appendFile('D:/test/getCompanyData.csv',arr.join('\n') + '\n', function () {
+				    fs.appendFile('./getCompanyData.csv',arr.join('\n') + '\n', function () {
 				  		console.log('追加内容完成'+'----------->>>>>'+i+"-------->>"+mail);
 				  		resolve() ;
 					});
@@ -55,7 +55,7 @@ function getcompanyData(i){
 				res.on('err',function(e){
 					mail = 'null'
 					arr.push([mail]); 
-					fs.appendFile('D:/test/getCompanyData.csv',arr.join('\n') + '\n', function () {
+					fs.appendFile('./getCompanyData.csv',arr.join('\n') + '\n', function () {
 				  		console.log('追加内容完成'+'---------->>>>>'+i+"-------->>"+mail);
 				  		resolve() ;
 					});
@@ -63,7 +63,7 @@ function getcompanyData(i){
 			}).on('error', function(e) {
 				mail = 'null'
 				arr.push([mail]); 
-			    fs.appendFile('D:/test/getCompanyData.csv',arr.join('\n') + '\n', function () {
+			    fs.appendFile('./getCompanyData.csv',arr.join('\n') + '\n', function () {
 			  		console.log('追加内容完成'+'------------->>>>>'+i+"-------->>"+mail);
 			  		resolve(e) ;
 				}); 
@@ -71,7 +71,7 @@ function getcompanyData(i){
 		}else{
 			mail = "null"
 			arr.push([mail]); 
-		    fs.appendFile('D:/test/getCompanyData.csv',arr.join('\n') + '\n', function () {
+		    fs.appendFile('./getCompanyData.csv',arr.join('\n') + '\n', function () {
 		  		console.log('追加内容完成'+'------------->>>>>'+i+"-------->>"+mail);
 		  		resolve() ;
 			});
