@@ -1,10 +1,10 @@
 // i18n
-(function(G) {
+(function (G) {
     G = G || {};
 
     var cn = {
             //--common--//
-            '_lang':'cn',
+            '_lang': 'cn',
             'title': 'iChoice健康解决方案',
             'bpm': '心率',
             'glu': '血糖',
@@ -14,10 +14,10 @@
             'ecg': '心电图',
             'thermometer': ' 体温表',
             'medReminder': '吃药提醒',
-            'reset':'复位'
+            'reset': '复位'
         },
         en = {
-            '_lang':'en',
+            '_lang': 'en',
             'title': 'iChoice Healthcare',
             'bpm': 'BPM',
             'glu': 'Blood Glucose',
@@ -27,13 +27,13 @@
             'ecg': 'ECG',
             'thermometer': ' Thermometer',
             'medReminder': 'Med-Reminder',
-            'reset':'reset'
+            'reset': 'reset'
         },
         lang = {},
-        i18n = function(k) {
+        i18n = function (k) {
             return lang[k] || null;
         },
-        auto = function() {
+        auto = function () {
             var bl = (navigator.language || navigator.browserLanguage).toLowerCase();
             bl.match('cn') ? (lang = cn) : (lang = en)
         };
@@ -60,44 +60,40 @@
      *      var number = 30;
      *      el.innerHTML = i18n.format('查看所有 {0} 条',number);
      */
-    i18n.format = function(str) {
+    i18n.format = function (str) {
         if (arguments.length == 1) return str;
         var args = Array.prototype.slice.call(arguments, 1);
-        return String(str).replace(/\{(\d+)\}/g, function(m, i) {
+        return String(str).replace(/\{(\d+)\}/g, function (m, i) {
             return args[i]
         })
     };
 
-    i18n.render = function(option) {
+    i18n.render = function (option) {
+        var a = document.getElementsByTagName('*'),t,s;		
         if (option === 'en' || option === 'cn') {
             lang = eval(option)
         }
-    
         $('select option').removeAttr('checked')
         $('select').val(lang._lang)
         // $(`select option[value='${lang._lang}']`).attr('selected','true')
-
-        setTimeout(function() {
-            // $('*').each(function () {
-            var a = document.getElementsByTagName('*'),
-                t, s;
+        setTimeout(function () {
+            // $('*').each(function () {        
             for (var i in a) {
                 t = a[i];
                 if (t && t.getAttribute) {
                     s = t.getAttribute('i18n');
-                    if (s && i18n(s) && !t.getAttribute('i18n-loaded')) {
+                    if (s && i18n(s)) {
                         t.innerHTML = i18n(s);
-                        // t.setAttribute('i18n-loaded', true);
                     }
                 }
             }
             // });
-        }, 10);
+        }, 30);
     };
 
-    document.body.addEventListener('DOMNodeInserted', function(e) {
-        i18n.render();
-    });
-    
+    // document.body.addEventListener('DOMNodeInserted', function (e) {
+        // i18n.render();
+    // });
+
     G.i18n = i18n;
 })(this);
