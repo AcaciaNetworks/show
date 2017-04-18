@@ -9,9 +9,10 @@
   "license": "ISC",
   "dependencies": {
     "cheerio": "^0.22.0",
-    "request": "^2.81.0",
-    "co": "^4.6.0"
-    },
+    "request": "^2.81.0"
+,
+    "co": "^4.6.0",
+    "fs": "^0.0.1"  },
   "devDependencies": {},
   "description": ""
 }

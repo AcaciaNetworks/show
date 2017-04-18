@@ -26,9 +26,7 @@ function getcompany(s){
 		    		if(companyName.indexOf(",") >= 0){
 		    			companyName = companyName.replace(","," ");
 		    		}
-		    		
 		    			companyUrl += '|';
-		    		
 		    		arr.push([companyName,companyUrl,memberLevel]);      
 				}); 
 			    fs.appendFile('D:/test/companyData.csv',arr.join('\n') + '\n', function () {
@@ -40,7 +38,7 @@ function getcompany(s){
 				console.log(e);
 				reject(e);
 				sta = sta -1;
-				
+	
 			});
 		}).on('error', function(e) {
 			reject(e);

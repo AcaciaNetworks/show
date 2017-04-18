@@ -3,14 +3,16 @@ var cheerio = require('cheerio');
 var fs = require('fs');
 var co = require('co');
 var url = [];
- 
-var myreg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+var timer;
+var myreg = /^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$/;
 fs.readFile('./companyUrl.csv','utf-8',function(err,data){  
     if(err){  
-        console.log(data);  
+        console.log("read err:"+data);  
     }else{  
       url = data.split("|\r\n");
-      console.log(url);
+      // https://www.sssltd.com/
+      // http://certific.ru/
+     // url = ["http://3dsoundlabs.com/"]
       co(function*(){
       	try {
       	for(var i = 0,len = url.length - 1;i<len;i++){
@@ -27,53 +29,69 @@ function getcompanyData(i){
 		var arr = [];
 		var mail = '';
 		var telPhone = ''
+
 		if(url[i] != 'undefined'){
-			console.log(`======`, url[i])
 			request.get(url[i]).on('response',function (res) {
+			timer = setTimeout(function(){
+					console.log('destroy')
+					res.destroy();
+				},12000);
+				console.log(res.statusCode+"-------->>>i");
 				var html = '';
 			    res.on('data',function(data){
 			    	html += data;
 			    });
 			    res.on('end', function () {
-			        var $ = cheerio.load(html); //采用cheerio模块解析html
-			        $("body").find('*').each(function(){
-			        	var txt = $(this).text().trim();
-			    		if(myreg.test(txt)){
-			    			mail = txt;
-			    			console.log(mail);
-			    			return false;
-			    		}else{
-			    			mail = 'null'
-			    		}
-					}); 
-					arr.push([mail]); 
-				    fs.appendFile('./getCompanyData.csv',arr.join('\n') + '\n', function () {
-				  		console.log('追加内容完成'+'----------->>>>>'+i+"-------->>"+mail);
+			    	console.log('endendendend')
+			    	try {
+			    		var $ = cheerio.load(html); //采用cheerio模块解析html
+			        	$("body").find('*').each(function(){
+			    		//	console.log('in each',arguments[0])
+				        	var txt = $(this).text().trim();
+				    		if(myreg.test(txt)){
+				    			mail = (i/1+1)+txt;
+				    			return false;
+				    		}else{
+				    			mail = (i/1+1)+'null';
+				    		}
+						}); 
+						  /*var ret = myreg.exec(html)
+						  mail = ret && ret[0]*/
+						// console.log(html)
+						arr.push([mail]); 
+			    	}catch(e) {
+			    		console.log(e)
+			    	}
+				    fs.appendFile('./new/getCompanyData.csv',arr.join('\n') + '\n', function () {
+				  		console.log('追加内容完成'+'----------->>>>>'+(i/1+1)+"-------->>"+mail);
 				  		resolve() ;
 					});
 				});
 				res.on('err',function(e){
-					mail = 'null'
+					mail = (i/1+1)+'null';
 					arr.push([mail]); 
-					fs.appendFile('./getCompanyData.csv',arr.join('\n') + '\n', function () {
-				  		console.log('追加内容完成'+'---------->>>>>'+i+"-------->>"+mail);
-				  		resolve() ;
+					fs.appendFile('./new/getCompanyData.csv',arr.join('\n') + '\n', function () {
+				  		console.log('追加内容完成'+'---------->>>>>'+(i/1+1)+"-------->>"+mail);
+				  		clearTimeout(timer);
+				  		resolve();
 					});
 				});
 			}).on('error', function(e) {
-				mail = 'null'
+				mail = (i/1+1)+'null';
 				arr.push([mail]); 
-			    fs.appendFile('./getCompanyData.csv',arr.join('\n') + '\n', function () {
-			  		console.log('追加内容完成'+'------------->>>>>'+i+"-------->>"+mail);
+			    fs.appendFile('./new/getCompanyData.csv',arr.join('\n') + '\n', function () {
+			  		console.log('追加内容完成'+'------------->>>>>'+(i/1+1)+"-------->>"+mail);
+			  		clearTimeout(timer);
 			  		resolve(e) ;
 				}); 
-			});
+			})
 		}else{
-			mail = "null"
+			mail = (i/1+1)+"null"
 			arr.push([mail]); 
-		    fs.appendFile('./getCompanyData.csv',arr.join('\n') + '\n', function () {
-		  		console.log('追加内容完成'+'------------->>>>>'+i+"-------->>"+mail);
-		  		resolve() ;
+		    fs.appendFile('./new/getCompanyData.csv',arr.join('\n') + '\n', function () {
+		  		console.log('追加内容完成'+'------------->>>>>'+(i/1+1)+"-------->>"+mail);
+		  		clearTimeout(timer);
+		  		resolve();
 			});
 		}
 	});
