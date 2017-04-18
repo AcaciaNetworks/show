@@ -174,7 +174,7 @@ function handleScanData(data, hub) {
         console.log("正在连接设备!");
     }else{
 
-        if (data.name.match("HW330")){
+        if (data.name.match("HW")){
             isConnecting[hub].flag = true;
             if(kusi.indexOf(deviceId)==-1){
                 kusi.push(deviceId);
