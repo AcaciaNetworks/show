@@ -7,12 +7,12 @@ var timer;
 var timeNAN;
 var myreg = /([0-9A-Za-z\-_\.]+)@([0-9a-z]+\.[a-z]{2,3}(\.[a-z]{2})?)/;
 //var myreg = /^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$/;
-fs.readFile('D:/test/companyUrl.csv','utf-8',function(err,data){  
+fs.readFile('./companyUrl.csv','utf-8',function(err,data){  
     if(err){  
         console.log("read err:"+data);  
     }else{  
     	console.log(data)
-      url = data.split("|\r\n");
+      url = data.split("|\n");
     //  url = ["http://www.ait-china.com"]
       co(function*(){
       	try {
