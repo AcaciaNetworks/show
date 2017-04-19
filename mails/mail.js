@@ -9,9 +9,7 @@ fs.readFile('./companyUrl.csv','utf-8',function(err,data){
     if(err){  
         console.log("read err:"+data);  
     }else{  
-      url = data.split("|\r\n");
-      // https://www.sssltd.com/
-      // http://certific.ru/
+      url = data.split("|\n");
      // url = ["http://3dsoundlabs.com/"]
       co(function*(){
       	try {
@@ -28,7 +26,6 @@ function getcompanyData(i){
 	return new Promise(function(resolve, reject) {
 		var arr = [];
 		var mail = '';
-		var telPhone = ''
 
 		if(url[i] != 'undefined'){
 			request.get(url[i]).on('response',function (res) {
