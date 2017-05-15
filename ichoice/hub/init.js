@@ -30,6 +30,8 @@ devices.push(require('../devices/ecg'))
 //add by WangRan
  devices.push(require('../devices/A6-56FF'));
  devices.push(require('../devices/HR'));
+devices.push(require('../devices/zewa'));
+
 
 
 //handler message from parent

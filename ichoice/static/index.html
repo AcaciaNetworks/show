@@ -203,6 +203,8 @@
     document.title += '-' + hubMac;
     $.get('token?mac=' + hubMac + '&callback=' + search.callback|| '')
             .then(function (ret) {
+
+                console.log("sssssss",search.callback);
                 if (ret.match('offline')) {
                     hubOffline();
                 } else {
@@ -238,7 +240,7 @@
     }
 
     function run() {
-        var es = new EventSource('/event?mac=' + hubMac);
+        var es = new EventSource('/event?mac=' + hubMac+ '&callback=' + search.callback|| '');
         es.addEventListener('message', function (e) {
             console.log(e.data);
             var action = JSON.parse(e.data);
@@ -267,6 +269,8 @@
     function parseSearch() {
         var searchStr = location.search.replace('?', '');
         var searchArr = searchStr.split('&');
+        console.log("#####:",location.search,"###:",searchStr);
+
         var tmpArr, k, ret = {};
         searchArr.forEach(function (t) {
             tmpArr = t.split('=');

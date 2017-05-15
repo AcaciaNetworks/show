@@ -92,7 +92,6 @@ exports.start = function start(mac) {
         });
     })
 };
-
 exports.stop = function stop(mac, isForce) {
     let theHub = hubs[mac];
     if (!theHub) return;
@@ -161,7 +160,8 @@ exports.addEvent = function addEvent(mac, res, callback) {
         });
         if (callback && arg.postData) {
             arg.postData.forEach(function (d) {
-                req({
+                
+                    req({
                     json: true,
                     method: 'POST',
                     form: d,
@@ -169,6 +169,10 @@ exports.addEvent = function addEvent(mac, res, callback) {
                 }, function (err, res, body) {
                     console.log('post to ', callback, err, body, res && res.statusCode);
                 });
+
+
+
+
             })
         }
     })

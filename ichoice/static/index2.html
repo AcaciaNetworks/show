@@ -227,9 +227,13 @@
         });
     }
 
-    function parseSearch() {
+    function
+
+
+	parseSearch() {
         var searchStr = location.search.replace('?', '');
         var searchArr = searchStr.split('&');
+        console.log("#####:",location.search,"###:",searchStr);
         var tmpArr, k, ret = {};
         searchArr.forEach(function (t) {
             tmpArr = t.split('=');

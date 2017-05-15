@@ -26,7 +26,8 @@ exports.onScan = function (data) {
 };
 
 exports.onNotify = function (data) {
-    if (!targetMap[data.id]) return
+    if (!targetMap[data.id]) return;
+    if (data.value.slice(6,8)!="40") return;
     let hex = data.value.slice(12, 14) + data.value.slice(10, 12);
     var weight = parseInt(hex, 16) / 10;
     console.log(hubMac, 'weight:', weight);
@@ -37,6 +38,13 @@ exports.onNotify = function (data) {
             device: 'weight',
             value: 'Weight：' + weight + ' kg',
             mac: data.id
-        }
+        },
+        postData: [{
+            type: 'weight',
+            value: weight,
+            mac: data.id,
+            hub_mac: hubMac,
+            timestamp: parseInt(Date.now() / 1000)
+        }]
     })
 }

@@ -32,6 +32,7 @@ app.get('/token', function(req, res) {
 //hub.start(defaultHub)
 
 app.get('/event', function(req, res) {
+    console.log("!!!!!!!!!:",req.query.callback,req);
     var hubMac = req.query.mac || defaultHub;
     sse(res);
     hub.addEvent(hubMac, res, req.query.callback || '');
@@ -42,6 +43,8 @@ app.get('/event', function(req, res) {
 });
 
 app.get('/discon', function(req, res) {
+    console.log("!!!!!!!!!:",req.query.callback,req);
+
     var hubMac = req.query.mac || defaultHub;
     common.getList().then(function(body) {
         console.log(body)

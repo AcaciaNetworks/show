@@ -39,6 +39,13 @@ exports.onNotify = function (data) {
             device: 'xueya',
             value: 'SBP:' + high + 'DBP:' + low + 'HR:' + heartRate,
             mac: data.id
-        }
+        },
+        postData: [{
+        type: 'BP',
+        value: high + ':' + low + ':' + heartRate,
+        mac: data.id,
+        hub_mac: hubMac,
+        timestamp: parseInt(Date.now() / 1000)
+    }]
     })
 }
