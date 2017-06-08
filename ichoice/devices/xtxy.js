@@ -41,7 +41,7 @@ exports.onNotify = function (data) {
             type: 'event',
             data: {
                 device: 'xueyang',
-                value: 'Pulse Oximeter:' + bo + 'HR:' + hr,
+                value: 'Pulse Oximeter: ' + bo + ' SpO2</br>Heartbeat: ' + hr + ' Pul/min',
                 mac: data.id
             },
             postData: [{
