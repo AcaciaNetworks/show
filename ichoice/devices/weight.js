@@ -16,7 +16,6 @@ exports.onScan = function (data) {
     co(function* () {
         targetMap[deviceMac] = true
         yield common.connect(deviceMac)
-
         yield common.writeByHandle(deviceMac, '22', '0100')
         yield common.writeByHandle(deviceMac, '25', '0100')
         yield common.writeByHandle(deviceMac, '28', '0100')

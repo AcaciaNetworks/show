@@ -9,7 +9,7 @@ var rq = require('request');
                 //0802A697225585
 //0802A6E0D6CC0D
 
-var istar1 = "E3:B1:4A:23:52:7C";
+var istar1 = "DC:28:77:B4:17:2D";
 var istar2 = "D9:D0:E8:A0:D8:2D";
 var istar3 = "EB:73:71:46:43:34";
 //0802A6DF90E6A9
@@ -20,7 +20,7 @@ var f1 = false;
 var f2 = false;
 var f3 = false;
 exports.onScan = function (data) {
-    if ((!data.bdaddrs[0].bdaddr.match(istar1))&&(!data.bdaddrs[0].bdaddr.match(istar2))&&(!data.bdaddrs[0].bdaddr.match(istar3))) return;
+    if ((!data.adData.match("0978"))&&(!data.bdaddrs[0].bdaddr.match(istar1))&&(!data.bdaddrs[0].bdaddr.match(istar2))&&(!data.bdaddrs[0].bdaddr.match(istar3))) return;
     if (isConnecting) return;
     isConnecting = true
     f1 = false;
@@ -45,13 +45,13 @@ exports.onNotify = function (data) {
 };
 var info = {
     "CC:1B:E0:E0:59:60":{
-        "E3:B1:4A:23:52:7C":{
-            "password":"7c52234a",
+        "DC:28:77:B4:17:2D":{
+            "password":"2d17b477",
             "randomNumber":""
         }
     }
 };
-
+//2d17b477
 //2dd8a0e8
 
 
