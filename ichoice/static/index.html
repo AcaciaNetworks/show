@@ -36,9 +36,6 @@
             margin: 0;
             text-align: left
         }
-        .m h1{
-            /*float:left;*/
-        }
         .sub {
             width: 31.333%;
             height: 27%;
@@ -140,7 +137,7 @@
                 <option value="en">English</option>
                 <option value="cn">中文</option>
             </select>
-            <button class="reset" id="reset" i18n='reset'>复位</button>
+            <button class="reset" id="reset" i18n='reset'>reset</button>
         </div>
         <div class="sub" style="background: #FF7373;">
             <h2 i18n="bpm">BPM</h2>
@@ -235,8 +232,8 @@
             device.attr('id', id);
             typeArea.append(device);
         }
-        device.find('.mac').text(data.mac);
-        device.find('.value').text(data.value)
+        device.find('.mac').html(data.mac);
+        device.find('.value').html(data.value)
     }
 
     function run() {

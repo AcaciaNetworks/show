@@ -34,7 +34,7 @@ exports.onNotify = function (data) {
             type: 'event',
             data: {
                 device: 'xueya',
-                value: '高压(SBP ):' + gy + '低压(DBP):' + dy + '脉搏(hr):' + mb,
+                value: 'High Blood Pressure: ' + gy + ' SYS mmHg</br>' + 'Low Blood Pressure: ' + dy + ' DIA mmHg</br>' + 'Heartbeat: ' + mb + ' Pul/min',
                 mac: data.id
             },
             postData: [{
